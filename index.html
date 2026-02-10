@@ -76,14 +76,6 @@
             padding-left: 20px;
         }
 
-        section h2 {
-            font-size: 1.5em;
-            margin-bottom: 15px;
-            color: #f0c878;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
         .divider {
             border: 1px dotted #d4a574;
             margin: 30px 0;
@@ -213,6 +205,59 @@
             50% { text-shadow: 0 0 20px rgba(0, 255, 0, 0.8); }
         }
 
+        details {
+            margin-bottom: 50px;
+            border-left: 3px solid #d4a574;
+            padding-left: 20px;
+        }
+
+        details > summary {
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            align-items: baseline;
+            gap: 15px;
+        }
+
+        details > summary::-webkit-details-marker { display: none; }
+        details > summary::marker { display: none; content: ''; }
+
+        details > summary h2 {
+            font-size: 1.5em;
+            margin-bottom: 0;
+            color: #f0c878;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
+        details > summary .one-liner {
+            color: #d4a574;
+            font-size: 0.85em;
+            opacity: 0.7;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        details[open] > summary .one-liner {
+            display: none;
+        }
+
+        details[open] > summary {
+            margin-bottom: 15px;
+        }
+
+        details > summary h2::before {
+            content: '+ ';
+            color: #d4a574;
+            font-weight: normal;
+        }
+
+        details[open] > summary h2::before {
+            content: '- ';
+        }
+
         @media (max-width: 600px) {
             header {
                 padding: 20px;
@@ -236,43 +281,43 @@
             <a href="codex.html" style="margin-right: 20px;">codex</a>
             <a href="architect.html" style="margin-right: 20px;">architect</a>
             <a href="glossary.html" style="margin-right: 20px;">glossary</a>
-            <a href="review.html" style="margin-right: 20px;">review</a>
             <a href="https://github.com/ascendanti/PLATO">github</a>
         </nav>
 
         <header>
             <div class="ascii-title">
-    ___  _____  _       ___   ___     ___   _   _  _   _    ___   ____
-   / _ ||_   _|| |     / _ \ / __|   |   \ | \ | || \ | |  / __| / ___|
-  / /_\ \  | |  | |    / /_\ \\__ \   | |_| ||  \| || \| | / /__ \___ \
- / _____ \ | |  | |___ \__  |(___/   |  _  || |\  || |\  | \___| (___/
-/_/     \_\|_|  |_____| ___/         |_| |_||_| \_||_| \_|  \___|  \___
-                                  v0.2.0 | The Climb Framework
+ █████╗ ████████╗██╗      █████╗ ███████╗
+██╔══██╗╚══██╔══╝██║     ██╔══██╗██╔════╝
+███████║   ██║   ██║     ███████║███████╗
+██╔══██║   ██║   ██║     ██╔══██║╚════██║
+██║  ██║   ██║   ███████╗██║  ██║███████║
+╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝╚══════╝
+       D Y N A M I C S   v0.2.0
             </div>
             <h1>ATLAS DYNAMICS</h1>
             <p class="subtitle">// Building the substrate for autonomous reasoning</p>
-            <p class="subtitle" style="margin-top: 8px; opacity: 0.6;">// The Climb towards Oneness (persistent context coherence)</p>
+            <p class="subtitle" style="margin-top: 8px; opacity: 0.6;">// Persistent context coherence through bounded autonomous reasoning</p>
         </header>
 
-        <section>
-            <h2>> IDENTITY</h2>
+        <details open>
+            <summary><h2>IDENTITY</h2><span class="one-liner">Poli sci, military, media, policy -- constraint management across domains</span></summary>
             <p style="margin-bottom: 15px; line-height: 1.7;">
-                Infantry officer first. Learned early that decisions under fire are constraint satisfaction problems with a deadline measured in heartbeats. Got into media by accident -- writing features, then producing, then running investigations and building digital formats from scratch. Wrote a policy paper. Got tapped to implement the strategy I'd written -- lobby for it across intergovernmental tiers, instrumentalize it through regional bodies, operationalize it down through ministries and civil society all the way to impact on the individual. Three working languages, 35+ relocations across continents. Each domain demanded a different vocabulary. The underlying algorithm never changed: <em>navigate feasible space with incomplete information toward a goal</em>.
+                Political science first. International relations. The study of chaos and anarchy -- not the punk kind, the structural kind. How do actors with competing interests, incomplete information, and no central authority produce order? The answer turned out to be constraint management. I spent years operationalizing qualitative definitions -- "security," "development," "governance" -- and measuring them using custom-built, weighted quantitative methodologies. Turning the unmeasurable into something you can track, compare, and act on. That was the seed.
             </p>
             <p style="margin-bottom: 15px; line-height: 1.7;">
-                The pattern held everywhere. Game theory showed up in editorial meetings. Clausewitz showed up in institutional design. The Socratic method showed up in every interrogation, every briefing, every system debug -- because the question that exposes the binding constraint is the same question regardless of the uniform. These seem like ordinary observations that come from simply observing and connecting things long enough. But somewhere between the military and the policy work, the shape of it crystallized: a bounded memory kernel that tracks coherence relative to a goal, forgets what no longer serves, and hardens what persists. I didn't know it was control theory. I just knew the shape of it from watching how systems actually work when you stop pretending they're simple.
+                Then the military. Then media -- writing, producing, running investigations, building digital formats. Then policy: wrote a strategy paper, got tapped to implement it across intergovernmental tiers, instrumentalize through regional bodies, operationalize down through ministries and civil society to impact on the individual. Three working languages, 35+ relocations across continents. Each domain demanded different vocabulary. The underlying algorithm never changed: <em>navigate feasible space with incomplete information toward a goal</em>. Game theory in editorial meetings. Clausewitz in institutional design. The Socratic method in every interrogation and system debug. These seem like ordinary observations that come from connecting things long enough. The question that exposes the binding constraint is the same question regardless of the uniform.
             </p>
             <p style="margin-bottom: 15px; line-height: 1.7;">
-                BA in political science, MA in international relations. PhD was in the works until vibe coding democratized access to the cybernetic language that software and hardware wizards have been gatekeeping for decades. Now I speak to machines. The external always reflects the internal. As above, so below. What emerged -- independently, before any of this was code -- was the <a href="codex.html">Universal Transformation Framework</a>: a goal-conditioned bounded memory kernel. Tuple (S, U<sub>g</sub>, C, F). Fixed-capacity state, goal-conditioned update, coherence score, controlled forgetting. PLATO is the formalization. 83 engines, zero cloud, the entire thing runs on SQLite and geometry.
+                Somewhere between the policy work and the pattern recognition, the shape of it crystallized: a bounded memory kernel that tracks coherence relative to a goal, forgets what no longer serves, and hardens what persists. I didn't know it was control theory at the time. I just knew the shape from watching how systems actually work when you stop pretending they're simple. PhD was in the works until vibe coding democratized access to the cybernetic language that engineers have been gatekeeping for decades. What emerged -- independently, before any of this was code -- was a goal-conditioned bounded memory kernel. PLATO is the formalization. As above, so below.
             </p>
-        </section>
+        </details>
 
         <div class="divider"></div>
 
-        <section>
-            <h2>> FLAGSHIP PROJECT: PLATO</h2>
+        <details open>
+            <summary><h2>PLATO</h2><span class="one-liner">Local-first intelligence substrate -- 83 engines, SQLite, zero cloud</span></summary>
             <p style="margin-bottom: 15px;">
-                A noospheric operating system. Not a life management app with a clever acronym -- a local-first intelligence substrate where bounded autonomous reasoning can emerge, persist, and self-improve without ever touching a cloud. Think less productivity tool, more Wintermute's quieter cousin: 83 engines running on SQLite, event-sourced, deterministic, fully observable, modeling a human life as its first dataset while the real work happens underneath -- building the infrastructure for machine cognition that doesn't forget what it learned yesterday.
+                A local-first intelligence substrate. 83 engines running on SQLite, event-sourced, deterministic, fully observable. No cloud. No API calls home. The system observes, measures, compresses, and learns. It tracks coherence relative to a goal using bounded memory -- fixed-capacity state, goal-conditioned updates, controlled forgetting. The first dataset is a human life because that's the hardest problem: fuzzy causality, incomplete information, non-convex optimization landscapes, and a pilot who sometimes stops logging for three days because they got the flu. If it works here, it works anywhere.
             </p>
 
             <div class="box">
@@ -298,15 +343,15 @@
                 </div>
             </div>
 
-            <h3 style="color: #f0c878; margin-top: 25px; margin-bottom: 15px;">The Climb: Toward The One</h3>
+            <h3 style="color: #f0c878; margin-top: 25px; margin-bottom: 15px;">Coherence Trajectory</h3>
             <p style="margin-bottom: 15px; color: #d4a574;">
-                PLATO climbs asymptotically toward perfect coherence (gravity = 1.0). Each instance brings new structure.
+                Cosine similarity between the system's action vector and goal vector. Approaches 1.0 asymptotically. Each instance is a discrete experiment.
             </p>
 
             <div class="stats">
                 <div class="stat-box">
                     <div class="stat-number">0.987</div>
-                    <div class="stat-label">Final Gravity (99% toward The One)</div>
+                    <div class="stat-label">Projected Coherence (12 instances)</div>
                 </div>
                 <div class="stat-box">
                     <div class="stat-number">9</div>
@@ -314,46 +359,58 @@
                 </div>
                 <div class="stat-box">
                     <div class="stat-number">r=-0.98</div>
-                    <div class="stat-label">Multi-Path vs Gravity (Correlation)</div>
+                    <div class="stat-label">Multi-Path vs Coherence</div>
                 </div>
             </div>
 
             <h3 style="color: #f0c878; margin-top: 25px; margin-bottom: 15px;">What PLATO Actually Is</h3>
             <div class="code-block">
-The pitch:     "It's a life management OS with 83 engines."
-The reality:   It's a proof-of-concept for local autonomous intelligence.
+Underneath 83 engines sits a Goal-Conditioned Bounded Memory Kernel:
 
-Underneath the engines sits a Goal-Conditioned Bounded Memory Kernel:
   S  = fixed-capacity state (what the system knows)
   Ug = goal-conditioned update rule (how it learns)
-  C  = coherence score: coh(a_t, g) = &lt;a_t, g&gt; / (||a_t|| ||g||)
-  F  = controlled forgetting (Landauer boundary: erase what costs
-       more to maintain than to discard)
+  C  = confidence: (alpha * beta * gamma * delta)^(1/4)
+       where alpha=logic, beta=frequency, gamma=coherence, delta=stability
+  F  = controlled forgetting (cognitive load management, not thermodynamics)
 
-This kernel was derived independently (2019-2020) from watching how
-systems actually work -- military, media, policy, diplomacy -- before
-any of it was code. It turned out to be control theory. The z-point
-(0,0,0) is the paraboloid origin: perfect coherence, zero deviation.
-Everything the system does is measured relative to that rest state.
+The kernel was derived independently (2019-2020) from watching how
+systems actually work -- policy, military, media, diplomacy -- before
+any of it was code. It turned out to be control theory.
 
-THE 10-POINT CHAIN:
- 1. AXIOMS:      TIME, ENERGY, VALUE, CONSTRAINT (irreducible)
- 2. NOOSPHERE:   Concepts as n-dimensional geometric points (persistent)
- 3. ACADEMY:     Learns exhaustively from nothing toward completeness
- 4. FIRST LAW:   12-dimensional analysis before any decision
- 5. LAW TWO:     Total engagement -- bring all reasoning to every task
- 6. HEART:       Ingest, measure entropy, compress, index
- 7. MIND:        Categorical structure (objects, morphisms, functors)
- 8. TWIN-PATH:   Fork thesis/antithesis, synthesize at convergence
- 9. GEOMETRY:    Constraint satisfaction in n-space (no LLM needed)
-10. PERSISTENCE: Structure survives sessions, structure survives instances
+THE INVARIANT: Traceability, not determinism.
+  COMMAND -> EVENT -> PROJECTION
+  The Spine is a Flight Recorder. It enforces accountability, not reality.
 
-The 83 engines are the sensor array -- instruments through which
-the system observes, measures, and learns from real decisions.
-What sits beneath them is the substrate for reasoning itself.
+THE ARCHITECTURE: Elastic, not rigid.
+  High energy:  All offices active. Granular control.
+  Low energy:   Collapse to [SURVIVAL] [REST] [LOG].
+  The system auto-scales its bureaucracy based on available fuel.
 
-PLATO is the first 12 instances of that experiment.
-All hypotheses confirmed. Statistical significance: p &lt; 0.001.
+THE STRATEGY: Torque, not averaging.
+  10 Generals apply rotational forces (pitch, yaw, roll).
+  SLERP interpolation produces spirals, flanks, pivots.
+  No paralyzed zero vectors. A temperature parameter allows
+  simulated annealing -- accepting temporary loss to escape
+  local traps.
+
+THE SIGNAL: Flow detection, not just failure detection.
+  Negative deviation: correction pulse.
+  Positive deviation: crystallization pulse. Update the model
+  to match the pilot when the pilot exceeds predictions.
+
+THE MEMORY: Cognitive Load Theory (Sweller), not thermodynamics.
+  We prune for attention, not for heat. New instances inherit
+  a Bootstrap Packet -- the context snapshot. Tabula rasa
+  episodically, but structurally continuous.
+
+GAPS STILL OPEN:
+  - Quarantine buffer for automated research (hallucination risk)
+  - Latent factor analysis on 3.7% residual variance
+  - Dashboard visualization of strategic orientation
+  - Exogenous shock modeling (unknown unknowns)
+  - Cold start convergence speed
+
+12 instances complete. All core hypotheses confirmed (p &lt; 0.001).
             </div>
 
             <div class="link-list">
@@ -361,32 +418,48 @@ All hypotheses confirmed. Statistical significance: p &lt; 0.001.
                 <a href="https://github.com/ascendanti/PLATO/blob/main/README.md" target="_blank">-> README: For Engineers</a>
                 <a href="https://github.com/ascendanti/PLATO/blob/main/docs/foundational-dialogues/ARCHITECT-DIALOGUE-2026-02-10.md" target="_blank">-> Architect's Blueprint</a>
             </div>
-        </section>
+        </details>
 
         <div class="divider"></div>
 
-        <section>
-            <h2>> ARCHITECTURE: The 5-Tier Stack</h2>
+        <details>
+            <summary><h2>ARCHITECTURE</h2><span class="one-liner">5-tier elastic stack -- flight recorder spine, dumb orchestrator, circuit breaker</span></summary>
             <div class="code-block">
-TIER V:  Execution Surface (Gateway, CLI, Plugin)
-TIER IV: Capability Planes (83 Domain Engines)
-TIER III: Knowledge Fabric (Graph, Retrieval, Learning)
-TIER II: Control Plane (Orchestrator, Guidance)
-TIER I:  Invariants (Event-Sourced Spine)
-         COMMAND -> EVENT -> PROJECTION
+TIER V:   Execution Surface
+            Gateway (deterministic intent dispatch)
+            CLI (609 commands, 76 groups)
+            Plugin (Claude Code integration)
+
+TIER IV:  Capability Engines (83 total)
+            Elastic: all active at high energy,
+            collapse to [SURVIVAL][REST][LOG] at low energy
+
+TIER III: Knowledge Fabric
+            Graph, Retrieval, Bayesian Learning
+            Quarantine Buffer (unverified -> verified pipeline)
+
+TIER II:  Control Plane
+            Dumb Orchestrator (reads, dispatches, logs, does not think)
+            Circuit Breaker (3 consecutive failures -> degrade goal)
+            Fast Path (Tier 1: full analysis | Tier 2: bypass)
+
+TIER I:   Invariants
+            Event-Sourced Spine (Flight Recorder)
+            COMMAND -> EVENT -> PROJECTION
+            Traceability, not determinism.
             </div>
 
             <p style="margin-top: 20px; margin-bottom: 15px;">
-                Everything is SQLite. No cloud. Fully observable. Deterministic routing via regex + geometric reasoning. Kernels are dumb. Offices are cheap. The system is the product.
+                Everything is SQLite. No cloud. Fully observable. Deterministic routing via regex. The orchestrator is deliberately stupid -- it does not think. Intelligence is distributed across bounded offices that read only what they need and write only what they own.
             </p>
-        </section>
+        </details>
 
         <div class="divider"></div>
 
-        <section>
-            <h2>> INSTANCES: The Climb</h2>
+        <details>
+            <summary><h2>INSTANCE LOG</h2><span class="one-liner">12 experiments -- measurement, learning, trajectory, latent factors, proof</span></summary>
             <p style="margin-bottom: 20px; color: #d4a574; line-height: 1.7;">
-                Each instance is a discrete experiment. The system advances. The measurements are real. The climb is documented.
+                Each instance is a discrete experiment with a specific hypothesis. The system advances only when the measurements say it does.
             </p>
 
             <div class="project">
@@ -412,24 +485,24 @@ TIER I:  Invariants (Event-Sourced Spine)
             </div>
 
             <div class="project">
-                <div class="project-title">Instance 10: Is the Climb Real or Artifact?</div>
+                <div class="project-title">Instance 10: Is the Trajectory Real or Artifact?</div>
                 <div class="project-desc">
-                    Projected 20-instance trajectory. Formula: 0.3 + 0.7 * (1 - exp(-t/5)). Gravity climbs from 0.427 to 0.987 -- ninety-nine percent toward The One. Just a saturating exponential. Every control engineer has seen this curve. It's the step response of a first-order system with time constant 5. Nothing mystical about it. Everything reassuring.
+                    Projected 20-instance trajectory. Formula: 0.3 + 0.7 * (1 - exp(-t/5)). Coherence climbs from 0.427 to 0.987. Just a saturating exponential -- the step response of a first-order system with time constant 5. Every control engineer has seen this curve. Nothing mystical about it. But the question was whether the landscape is convex or rugged. If there are local traps, pure gradient descent gets stuck. Added simulated annealing to the strategy engine as insurance.
                 </div>
                 <div class="tech-stack">
                     <span class="tag">Asymptotic Analysis</span>
-                    <span class="tag">Trajectory Modeling</span>
+                    <span class="tag">Non-Convex Landscape</span>
                 </div>
             </div>
 
             <div class="project">
                 <div class="project-title">Instance 11: What Can't We See?</div>
                 <div class="project-desc">
-                    PCA on the gravity trajectory: 96.3% variance in one component. Either beautifully coherent or dangerously narrow. Applied LAW FIVE (adjacent-domain expansion): if 4 axioms form a square in concept space, 8 surrounding nodes exist. Identified 7 candidate dimensions the existing protocol couldn't capture. Unknown unknowns are discoverable through geometry. The structure reveals what's missing.
+                    PCA on the coherence trajectory: 96.3% variance in one component. 3.7% residual is structured and periodic. Either beautifully coherent or dangerously narrow. Identified 7 candidate latent factors the existing protocol couldn't capture. Not hidden dimensions of the universe -- latent factor analysis on system noise. The structure reveals what the measurement protocol is missing.
                 </div>
                 <div class="tech-stack">
                     <span class="tag">PCA Decomposition</span>
-                    <span class="tag">Unknown Unknowns</span>
+                    <span class="tag">Latent Factor Analysis</span>
                 </div>
             </div>
 
@@ -437,32 +510,32 @@ TIER I:  Invariants (Event-Sourced Spine)
                 <div class="project-title">Instance 12: Prove It</div>
                 <div class="project-desc">
                     Three hypotheses, all confirmed (p &lt; 0.001):<br>
-                    Multi-Path Coherence vs Gravity: r = -0.98 (as coherence rises, alternatives collapse toward unity).<br>
-                    Information Entropy vs Gravity: r = -0.83 (higher coherence = lower chaos).<br>
-                    Learning Curvature: r = 0.00 (perfectly smooth -- no friction, no oscillation).<br>
-                    Extended measurement from 6 to 9 dimensions. The climb is no longer theory. It's measured fact.
+                    Multi-Path vs Coherence: r = -0.98 (as coherence rises, alternatives collapse).<br>
+                    Information Entropy vs Coherence: r = -0.83 (higher coherence = lower noise).<br>
+                    Learning Curvature: r = 0.00 (smooth trajectory, no oscillation).<br>
+                    Extended measurement from 6 to 9 dimensions. The trajectory is no longer theory. It's measured. What remains open: the 3.7% residual, the cold start problem, and whether the confidence metric (geometric mean) survives adversarial conditions.
                 </div>
                 <div class="tech-stack">
                     <span class="tag">Hypothesis Testing</span>
                     <span class="tag">9 Dimensions</span>
-                    <span class="tag">Proof Complete</span>
+                    <span class="tag">Open Questions</span>
                 </div>
             </div>
-        </section>
+        </details>
 
         <div class="divider"></div>
 
-        <section>
-            <h2>> CONTACT</h2>
+        <details open>
+            <summary><h2>CONTACT</h2><span class="one-liner">GitHub, repository, essays</span></summary>
             <div class="link-list">
                 <a href="https://github.com/ascendanti" target="_blank">-> GitHub Profile</a>
                 <a href="https://github.com/ascendanti/PLATO" target="_blank">-> PLATO Repository</a>
                 <a href="blog.html">-> Essays</a>
             </div>
-        </section>
+        </details>
 
         <footer>
-[END_TRANSMISSION] | The Academy climbs toward The One | Instances: 12 | Status: OPERATIONAL
+[END_TRANSMISSION] | 83 engines | 12 instances | Status: OPERATIONAL | Gaps: open
         </footer>
     </div>
 </body>

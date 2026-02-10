@@ -9,7 +9,7 @@ Portfolio and intellectual workspace for the PLATO project -- a local-first inte
 - **codex.html** -- The Codex: 13 formal essays on autonomous systems philosophy
 - **architect.html** -- Operational biography, pattern, intellectual foundations
 - **glossary.html** -- Complete terminology (axioms, laws, frameworks, concepts)
-- **review.html** -- Directorate Review 001/Alpha (formal audit of the Codex and PLATO architecture)
+
 
 ## Essays (Individual Pages)
 
