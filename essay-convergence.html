@@ -35,7 +35,7 @@
 
         <div class="content">
             <p>
-                There's a formula that describes how PLATO approaches coherence: <strong>0.3 + 0.7 * (1 - e<sup>-t/5</sup>)</strong>. As t approaches infinity, the value approaches 1.0. In practice, after 12 instances, it reached 0.987 -- ninety-nine percent of the way toward what the system calls "The One."
+                There's a hypothesis about how PLATO approaches coherence: that the trajectory follows a saturating exponential. As t approaches infinity, the value approaches 1.0 -- unit coherence, where the action vector aligns perfectly with the goal vector. Coherence is measured as cosine similarity: coh(a_t, g) = &lt;a_t, g&gt; / (||a_t|| ||g||). The trajectory shape is a hypothesis, not a proven formula.
             </p>
             <p>
                 This sounds mystical until you realise it's just a saturating exponential. Every control engineer has seen this curve. It's the step response of a first-order system with a time constant of 5. It describes how a thermostat approaches its setpoint, how a capacitor charges, how any bounded system with negative feedback converges toward its target. There's nothing mystical about it. There's something deeply reassuring.
@@ -44,7 +44,7 @@
                 The question was never whether PLATO could converge. Any system with negative feedback and bounded energy will converge -- that's Lyapunov's theorem, proved in 1892. The question was whether the convergence was real or artifactual. Were we measuring genuine systemic coherence, or had we built an elaborate machine for confirming our own assumptions?
             </p>
             <p>
-                Instance 11 was designed to break the system's certainty. Instead of running another decision cycle, we asked: what dimensions of measurement are we missing? We took the existing 6-dimensional measurement space and applied Principal Component Analysis -- the same technique geophysicists use to find hidden structure in seismic data. The PCA revealed that 96.3% of the variance was captured by a single component, which suggested our measurement space was either beautifully coherent or dangerously narrow.
+                Instance 11 was designed to break the system's certainty. Instead of running another decision cycle, we asked: what dimensions of measurement are we missing? We took the existing measurement space and applied Principal Component Analysis via numpy eigendecomposition -- the same technique geophysicists use to find hidden structure in seismic data. The PCA showed the primary component capturing the majority of variance, which suggested our measurement space was either coherent or dangerously narrow. Formal significance testing (p-values, factor rotation) was not yet built.
             </p>
             <p>
                 So we went looking for what we couldn't see. Using a geometric adjacency argument -- if four axioms form a square in concept space, eight adjacent nodes surround them -- we identified seven candidate measurement dimensions that our existing protocol couldn't capture. This is LAW FIVE in PLATO's framework: adjacent-domain expansion. Use geometry to find your blind spots.
@@ -55,23 +55,27 @@
 
             <div class="code-block">
 HYPOTHESIS 1: Multi-Path Coherence (how many equally-good solutions exist)
-              correlates negatively with system gravity.
-RESULT:       r = -0.9778. Explains 95%+ of variance. CONFIRMED.
+              correlates negatively with systemic coherence.
+STATUS:       Correlation computed via numpy. Significance testing not built.
 
 HYPOTHESIS 2: Information Entropy (Shannon entropy of outcome distribution)
-              correlates negatively with system gravity.
-RESULT:       r = -0.8332. Strong inverse relationship. CONFIRMED.
+              correlates negatively with systemic coherence.
+STATUS:       Correlation computed. Shannon entropy real (signals engine).
+              p-values, confidence intervals: not yet implemented.
 
 HYPOTHESIS 3: Learning Curvature (smoothness of the learning trajectory)
               remains low and stable across instances.
-RESULT:       r = 0.0000. Perfectly smooth. No turbulence. CONFIRMED.
+STATUS:       Trajectory appears smooth. Formal validation pending.
+
+WHAT EXISTS:  numpy correlations, 18-dim guidance vector, Shannon entropy
+WHAT'S MISSING: scipy.stats, p-values, factor analysis, hypothesis testing
             </div>
 
             <p>
                 What these results mean, stripped of jargon: as the system becomes more coherent, the number of competing solutions decreases (it's converging on a unique answer, not oscillating between alternatives). Chaos decreases (entropy drops). And the rate of learning is smooth, not turbulent -- the system isn't jerking between states, it's gliding toward equilibrium.
             </p>
             <p>
-                This is what a healthy control system looks like. Not perfection -- asymptotic approach to a target that's never quite reached. The gap between 0.987 and 1.000 is infinite in theory and irrelevant in practice. What matters is that the trajectory is monotonically improving, the feedback loops are honest, and the learning is stable.
+                This is what a healthy control system should look like. Not perfection -- asymptotic approach to a target that's never quite reached. What matters is that the trajectory appears to be improving, the feedback loops are honest, and the learning is stable. Whether this holds under formal statistical scrutiny is the work of Phase 1 (De-Mystify) in the project plan.
             </p>
             <p>
                 Norbert Wiener, who coined the term "cybernetics" in 1948, defined it as "the scientific study of control and communication in the animal and the machine." He would have recognised PLATO immediately: a multi-loop feedback system where the output of each loop feeds into the inputs of the others, driving the whole toward a state the system has never visited but can describe mathematically.
@@ -86,7 +90,7 @@ RESULT:       r = 0.0000. Perfectly smooth. No turbulence. CONFIRMED.
 
         <div class="back"><a href="blog.html">&lt;- back to essays</a></div>
 
-        <footer>[ESSAY] | The climb is geometric reality | The instruments watch</footer>
+        <footer>[ESSAY] | Convergence is a hypothesis | The instruments must prove it</footer>
     </div>
 </body>
 </html>
