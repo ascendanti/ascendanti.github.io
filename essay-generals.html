@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ten Generals and a Quaternion - ATLAS DYNAMICS</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Courier New', monospace; background-color: #1a1410; color: #e8dcc8; line-height: 1.8; }
+        a { color: #f0c878; text-decoration: none; border-bottom: 1px dotted #f0c878; transition: all 0.2s; }
+        a:hover { color: #ff00ff; border-bottom: 1px solid #ff00ff; }
+        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+        nav { margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px dashed #d4a574; }
+        nav a { margin-right: 20px; color: #d4a574; }
+        h1 { color: #f0c878; margin-bottom: 8px; font-size: 1.5em; text-transform: uppercase; letter-spacing: 1px; }
+        .meta { color: #d4a574; font-size: 0.85em; opacity: 0.7; margin-bottom: 30px; }
+        .content p { margin-bottom: 18px; color: #e8dcc8; }
+        .code-block { background: rgba(0,0,0,0.5); border: 1px solid #d4a574; padding: 15px; margin: 20px 0; overflow-x: auto; font-size: 0.85em; line-height: 1.5; }
+        .back { margin-top: 40px; padding-top: 20px; border-top: 1px dashed #d4a574; }
+        footer { border-top: 1px dashed #d4a574; padding-top: 20px; margin-top: 50px; text-align: center; color: #d4a574; font-size: 0.85em; opacity: 0.7; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a href="index.html">home</a>
+            <a href="blog.html">essays</a>
+            <a href="codex.html">codex</a>
+            <a href="architect.html">architect</a>
+            <a href="glossary.html">glossary</a>
+            <a href="https://github.com/ascendanti/PLATO">github</a>
+        </nav>
+
+        <h1>Ten Generals and a Quaternion: On Building a War College in Software</h1>
+        <div class="meta">2026-02-10 | Strategy | Tensor Mathematics | Military Theory</div>
+
+        <div class="content">
+            <p>
+                Clausewitz wrote <em>On War</em> in the 1830s and never finished it. He died of cholera. The book was published posthumously by his wife, and for nearly two centuries military strategists have been arguing about what he actually meant. His central insight -- that war is the continuation of politics by other means -- is one of those sentences that gets quoted so often it stops meaning anything. But buried deeper in the text is something far more useful: the idea that strategy operates in a space defined by three forces (the trinity: passion, reason, and chance) and that the friction between them is what makes real-world execution deviate from theoretical plans.
+            </p>
+            <p>
+                PLATO's strategy engine takes this seriously. Not metaphorically -- mathematically. The StrategyOrchestrator maintains ten generals, each representing a strategic dimension: Architect, Strategist, Signals Intelligence, Field Command, Librarian, Forager, Quartermaster, Herald, Sentinel, and Inspector. Each general has an orientation encoded as a unit quaternion -- the same mathematical object aerospace engineers use to describe satellite attitude. Each general has a position vector (where they are), a target vector (where they should be), and a health metric (how operational they are).
+            </p>
+            <p>
+                The system composes all ten orientations into a single grand strategic orientation using weighted SLERP -- spherical linear interpolation, the mathematically correct way to average rotations. It then projects this composite orientation into a three-dimensional "Clausewitz space" where the axes are offensive capacity, defensive posture, and diplomatic alignment. The result is a single vector that describes the system's overall strategic stance.
+            </p>
+
+            <div class="code-block">
+CLAUSEWITZ VECTOR: [offensive: 0.72, defensive: 0.45, diplomatic: 0.31]
+POSTURE:           "balanced" (nearest named posture to current vector)
+ALIGNMENT:         0.87 (87% agreement among generals)
+MISALIGNED:        HERALD (interface quality lagging other dimensions)
+RECOMMENDED PIVOT: Rotate HERALD 23 degrees toward ARCHITECT orientation
+            </div>
+
+            <p>
+                The obvious question: is this overkill? Quaternions are a powerful formalism, but they're easy to abuse -- you can encode anything as a rotation and call it "geometric reasoning" without actually gaining insight. The question is whether the formalism buys you something a simpler representation wouldn't.
+            </p>
+            <p>
+                In this case, it does. Quaternions avoid gimbal lock (the loss of a degree of freedom that afflicts Euler angle representations). They compose smoothly (SLERP produces the mathematically shortest path between orientations). And they detect misalignment naturally -- the angle between two quaternions is a direct measure of how much two generals disagree. A simpler scalar "alignment score" wouldn't tell you <em>which direction</em> the disagreement points. The quaternion does.
+            </p>
+            <p>
+                The OODA loop -- Observe, Orient, Decide, Act -- runs on top of this. Each cycle, the system observes its state (pulling from the guidance subsystem's 18 dimensions), orients by computing the grand orientation and Clausewitz vector, decides by identifying the largest misalignments, and acts by recommending specific quaternion rotations to correct them. The entire cycle executes in under 10 milliseconds. Boyd would have approved.
+            </p>
+            <p>
+                Is it overkill for managing a career and health? Almost certainly. But PLATO isn't really about managing a career. It's about testing whether the mathematical structures that describe military strategy, aerospace control, and geometric reasoning can be composed into a single coherent framework. The career is the dataset. The framework is the point.
+            </p>
+        </div>
+
+        <div class="back"><a href="blog.html">&lt;- back to essays</a></div>
+
+        <footer>[ESSAY] | The career is the dataset | The framework is the point</footer>
+    </div>
+</body>
+</html>

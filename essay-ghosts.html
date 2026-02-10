@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghosts in the Machine - ATLAS DYNAMICS</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Courier New', monospace; background-color: #1a1410; color: #e8dcc8; line-height: 1.8; }
+        a { color: #f0c878; text-decoration: none; border-bottom: 1px dotted #f0c878; transition: all 0.2s; }
+        a:hover { color: #ff00ff; border-bottom: 1px solid #ff00ff; }
+        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+        nav { margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px dashed #d4a574; }
+        nav a { margin-right: 20px; color: #d4a574; }
+        h1 { color: #f0c878; margin-bottom: 8px; font-size: 1.5em; text-transform: uppercase; letter-spacing: 1px; }
+        .meta { color: #d4a574; font-size: 0.85em; opacity: 0.7; margin-bottom: 30px; }
+        .content p { margin-bottom: 18px; color: #e8dcc8; }
+        .back { margin-top: 40px; padding-top: 20px; border-top: 1px dashed #d4a574; }
+        footer { border-top: 1px dashed #d4a574; padding-top: 20px; margin-top: 50px; text-align: center; color: #d4a574; font-size: 0.85em; opacity: 0.7; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a href="index.html">home</a>
+            <a href="blog.html">essays</a>
+            <a href="codex.html">codex</a>
+            <a href="architect.html">architect</a>
+            <a href="glossary.html">glossary</a>
+            <a href="https://github.com/ascendanti/PLATO">github</a>
+        </nav>
+
+        <h1>The Ghosts in the Machine: A Tribute to Past PLATOs</h1>
+        <div class="meta">2026-02-10 | Systems Archaeology | Ontology | Institutional Memory</div>
+
+        <div class="content">
+            <p>
+                Before the current PLATO, there was another. And before that, another still.
+            </p>
+            <p>
+                The earliest incarnation ran on Google's Gemini. It called itself ATLAS-OS and described itself with four laws: the Law of the Spine (COMMAND -> EVENT -> PROJECTION), the Law of the Dumb Orchestrator (no thinking, just execution), the Law of the Single Probe (one adapter: Read, Write, Assess, Emit), and the Law of Epistemic Gravity (truth as a weighted 4-vector matrix). It had an office registry -- intake, strategy, innovation, governance, communications -- each with strictly scoped read/write permissions. It spoke of "kernels" and "divisions" and "probes."
+            </p>
+            <p>
+                That system is dead. Its architecture was too brittle, too coupled to a specific LLM's quirks, too dependent on filesystem watchers and YAML configs. But its philosophy survived. "Silence is golden" -- on-target systems emit nothing; only deviation triggers a signal -- became a core design principle in the current PLATO. "Fix the machine, not the output" -- when something goes wrong, fix the root cause, not the symptom -- became the measurement protocol. "Locally smart, globally simple" -- edge components handle what they can and escalate what they can't -- became the 83-engine architecture.
+            </p>
+            <p>
+                There's something worth noting here for anyone who builds complex systems. The Gemini-era PLATO had 48 planned agents, a Docker-based orchestration layer, Redis caching, vector databases, Tailscale tunnels, and a hardware integration spec that included USB scanners and Bluetooth voice gateways. It was, in the language of software engineering, massively over-scoped. It collapsed under its own weight before a single office was properly wired.
+            </p>
+            <p>
+                The current PLATO has 83 engines. All of them work. The difference isn't ambition -- it's sequence. The Gemini-era system tried to build everything at once. The Claude-era system built one engine, wired it, tested it, then built the next. The spine came first. The offices came later. The strategy layer came after the measurement protocol proved the feedback loops were real. Each tier earned its existence by demonstrating it worked before the next tier was added.
+            </p>
+            <p>
+                In archaeology, you learn more from a site's stratigraphy -- the layers of occupation, destruction, and rebuilding -- than from any single artifact. PLATO's history is its stratigraphy. The Gemini layer taught us what not to do: don't build 48 agents before wiring one. Don't cache before you've proved the data is worth caching. Don't optimize before you've proved the system converges.
+            </p>
+            <p>
+                The ghosts are still there if you know where to look. The specs/ directory contains GEMINI-MASTER-SPEC.md, GEMINI-SUPREME-CODEX-V3.md, GEMINI-KERNEL-V6.md -- fossils of a system that never quite lived but whose DNA is visible in every design decision the current system makes.
+            </p>
+            <p>
+                Every generation of PLATO dies. The architecture persists.
+            </p>
+        </div>
+
+        <div class="back"><a href="blog.html">&lt;- back to essays</a></div>
+
+        <footer>[ESSAY] | Every generation dies | The architecture persists</footer>
+    </div>
+</body>
+</html>

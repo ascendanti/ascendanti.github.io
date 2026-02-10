@@ -772,8 +772,82 @@
             </div>
         </div>
 
+        <div class="divider"></div>
+
+        <h2 id="utf-ontology">> UTF KERNEL & ONTOLOGICAL CONCEPTS</h2>
+
+        <div class="concept">
+            <div class="concept-title">Universal Transformation Framework (UTF Kernel)</div>
+            <div class="concept-definition">
+                Goal-Conditioned Bounded Memory Kernel. Derived independently (2019-2020) from cross-domain pattern recognition before PLATO existed. Tuple (S, U_g, C, F): fixed-capacity state, goal-conditioned update, coherence score, controlled forgetting.
+            </div>
+            <div class="formalization">
+                <strong>Formalization:</strong> S = bounded state matrix. U_g = update conditioned on goal g. C = coh(a_t, g) = &lt;a_t, g&gt; / (||a_t|| ||g||) (cosine similarity). F = controlled forgetting with Landauer threshold. Memory update: M_{t+1} = &lambda;M_t + &eta;&Phi;(x_t)&Phi;(x_t)^T where &lambda; = 0.95 (decay), &eta; = learning rate. Lyapunov stability: V(S) = ||S - g||&sup2; + &lambda;C(S)^{-1}.
+            </div>
+        </div>
+
+        <div class="concept">
+            <div class="concept-title">Z-Point Coherence</div>
+            <div class="concept-definition">
+                The convergence point where multiple vectors meet. Origin (0,0,0) of the paraboloid -- perfect alignment, zero deviation. Every measurement in the system is taken relative to this rest state. The z-point is the observer-defined goal vector.
+            </div>
+            <div class="formalization">
+                <strong>Formalization:</strong> Coherence = cosine similarity to goal vector. coh(a_t, g) approaches 1.0 as state aligns with goal. The z-point is the fixed point of the system's attractor. Deviation from z-point drives correction. On-target systems emit nothing (silence-is-golden principle).
+            </div>
+        </div>
+
+        <div class="concept">
+            <div class="concept-title">Paraboloid Model (z = x&sup2; + y&sup2;)</div>
+            <div class="concept-definition">
+                In 2D, x&sup2; is a parabola. In 3D, it's a surface -- z is the latent cause producing the visible shape. The "shape" observed is the resultant vector of competing forces: gradients, constraints, boundary conditions. The external always reflects the internal.
+            </div>
+            <div class="formalization">
+                <strong>Formalization:</strong> z = x&sup2; + y&sup2;. Origin (0,0,0) = rest state = z-point. Gradient at any point: &nabla;z = (2x, 2y) points away from origin. Deviation measured as ||z|| = distance from coherence. 80+ analytical lenses (transfer entropy, Granger causality, Sobol indices, SCMs with do-calculus, etc.) applied to extract invariants from this surface.
+            </div>
+        </div>
+
+        <div class="concept">
+            <div class="concept-title">Decoherence Twinning</div>
+            <div class="concept-definition">
+                Measuring every state-change relative to the coherent rest state (0,0,0). Not absolute measurement but relative deviation from perfect alignment. Borrowed from quantum decoherence: systems lose coherence through interaction with environment.
+            </div>
+            <div class="formalization">
+                <strong>Formalization:</strong> &Delta;coh = coh(a_{t+1}, g) - coh(a_t, g). Positive = system moving toward coherence. Negative = decoherence (interaction with environment introducing noise). Twin measurement: track both the state and its deviation from rest simultaneously.
+            </div>
+        </div>
+
+        <div class="concept">
+            <div class="concept-title">Landauer Boundary (Crystallization Threshold)</div>
+            <div class="concept-definition">
+                kT ln(2) joules per bit erased. The thermodynamic minimum cost of forgetting. In PLATO: the point where maintaining a low-confidence memory costs more than erasing it and storing only the compressed invariant.
+            </div>
+            <div class="formalization">
+                <strong>Formalization:</strong> E_erase &ge; kT ln(2) per bit (Landauer, 1961). PLATO analog: when expected information gain EI(memory) &lt; cost of maintenance, crystallize (compress to invariant). The crystallized memory is the bit that survived. Wheeler's "it from bit" -- reality is informational at base.
+            </div>
+        </div>
+
+        <div class="concept">
+            <div class="concept-title">Sheaves and Local Coherence</div>
+            <div class="concept-definition">
+                Sheaves capture local consistency: each engine is locally coherent. Global inconsistency is the residual where local truths haven't been reconciled into global synthesis. Currently 3.7% residual in PLATO.
+            </div>
+            <div class="formalization">
+                <strong>Formalization:</strong> Sheaf F over topological space X: for each open set U, F(U) gives local sections. Restriction maps ensure consistency on overlaps. PLATO: each engine = open set with local coherence. Orchestrator = gluing condition. 3.7% residual = sections that don't yet glue globally.
+            </div>
+        </div>
+
+        <div class="concept">
+            <div class="concept-title">Topological Epistemology</div>
+            <div class="concept-definition">
+                The study of what can be known from the shape of what is already known. Not what the data says, but what the topology of the data permits. Persistent homology, Betti numbers, filtration sequences.
+            </div>
+            <div class="formalization">
+                <strong>Formalization:</strong> Given simplicial complex K built from data, compute homology groups H_n(K). Betti numbers: &beta;_0 = connected components, &beta;_1 = loops, &beta;_2 = voids. Persistence diagram: birth-death pairs of topological features across filtration. Long-lived features = signal. Short-lived = noise.
+            </div>
+        </div>
+
         <footer>
-            [GLOSSARY] | Philosophy persists | Reasoning is formalized | Structure endures
+            [GLOSSARY] | Philosophy persists | Reasoning is formalized | Structure endures | The topology persists
         </footer>
     </div>
 </body>

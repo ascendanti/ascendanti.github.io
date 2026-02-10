@@ -1,47 +1,37 @@
-# ASCENDANTI - Personal Portfolio
+# ASCENDANTI
 
-Minimal cyberpunk portfolio showcasing PLATO (Personal Life AI Through Orchestration).
+Portfolio and intellectual workspace for the PLATO project -- a local-first intelligence substrate built on SQLite, event-sourcing, and geometric reasoning.
 
 ## Pages
 
-- **index.html** — Identity, PLATO overview, architecture, instances
-- **blog.html** — Technical essays on autonomous systems, measurement, validation
+- **index.html** -- Identity, PLATO overview, architecture, instance log
+- **blog.html** -- Essay index (links to individual essay pages)
+- **codex.html** -- The Codex: 13 formal essays on autonomous systems philosophy
+- **architect.html** -- Operational biography, pattern, intellectual foundations
+- **glossary.html** -- Complete terminology (axioms, laws, frameworks, concepts)
 
-## Design Philosophy
+## Essays (Individual Pages)
 
-- ASCII aesthetic
-- Green-on-black monospace (cyberpunk)
-- Minimal, grounded technical content
-- No frameworks, no build tools
-- Fast and lightweight
+- **essay-ship.html** -- The Ship That Remembers (persistence, identity, structure)
+- **essay-fiction.html** -- Prohibition of Fiction (measurement, epistemology)
+- **essay-convergence.html** -- Geometry of Convergence (control theory, validation)
+- **essay-ghosts.html** -- Ghosts in the Machine (systems archaeology, past PLATOs)
+- **essay-generals.html** -- Ten Generals and a Quaternion (strategy, tensor math)
+- **essay-sentence.html** -- The Sentence That Destroys (language theory, Socratic method)
+- **essay-systems.html** -- Building Systems That Build Systems (meta-engineering, Academy)
+- **essay-nspace.html** -- N-Space and Digital Geometry (topology, z-point coherence)
 
-## How to Deploy
+## Design
 
-This site is designed to run as GitHub Pages.
+- Courier New monospace, amber-on-dark (#d4a574 on #1a1410)
+- No frameworks, no build tools, no dependencies
+- Static HTML -- deploys as GitHub Pages
+- Each page is self-contained with inline CSS
 
-1. Create a new GitHub repository: `ascendanti.github.io`
-2. Push this content to that repository on the `main` branch
-3. Enable GitHub Pages in repository settings
-4. Site will be live at: https://ascendanti.github.io
+## Deploy
 
-```bash
-cd C:\Users\ataua\OneDrive\Documents\GitHub\ascendanti.github.io
-git init
-git add .
-git commit -m "Initial commit: ASCENDANTI portfolio"
-git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/ascendanti.github.io.git
-git push -u origin main
-```
-
-## Content
-
-All content reflects PLATO's design principles:
-- **Minimal**: No bloat, only signal
-- **Deterministic**: Observable, predictable structure
-- **Autonomous**: No external dependencies
-- **Grounded**: All claims traceable to implementation
+Push to `main` branch of `ascendanti.github.io` repository. GitHub Pages serves automatically.
 
 ---
 
-*The site itself is an example of what it describes.*
+*The site itself is an example of what it describes: minimal, deterministic, autonomous, grounded.*
