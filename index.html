@@ -305,10 +305,10 @@
                 Political science first. International relations. The study of chaos and anarchy -- not the punk kind, the structural kind. How do actors with competing interests, incomplete information, and no central authority produce order? The answer turned out to be constraint management. I spent years operationalizing qualitative definitions -- "security," "development," "governance" -- and measuring them using custom-built, weighted quantitative methodologies. Turning the unmeasurable into something you can track, compare, and act on. That was the seed.
             </p>
             <p style="margin-bottom: 15px; line-height: 1.7;">
-                Then the military. Then media -- writing, producing, running investigations, building digital formats. Then policy: wrote a strategy paper, got tapped to implement it across intergovernmental tiers, instrumentalize through regional bodies, operationalize down through ministries and civil society to impact on the individual. Three working languages, 35+ relocations across continents. Each domain demanded different vocabulary. The underlying algorithm never changed: <em>navigate feasible space with incomplete information toward a goal</em>. Game theory in editorial meetings. Clausewitz in institutional design. The Socratic method in every interrogation and system debug. These seem like ordinary observations that come from connecting things long enough. The question that exposes the binding constraint is the same question regardless of the uniform.
+                Then media -- writing features, producing, running investigations, building digital formats from scratch. Then a stint as an infantry officer, where decisions under fire turned out to be the same constraint satisfaction problem with a shorter deadline. Then back to media as GM of a corporation, where aligning 80+ people toward coherent output is the same algorithm wearing a different uniform. Then policy: wrote a strategy paper, got tapped to implement it across intergovernmental tiers, instrumentalize through regional bodies, operationalize down through ministries and civil society to impact on the individual. Three working languages, 35+ relocations across continents. Each domain demanded different vocabulary. The underlying algorithm never changed: <em>navigate feasible space with incomplete information toward a goal</em>.
             </p>
             <p style="margin-bottom: 15px; line-height: 1.7;">
-                Somewhere between the policy work and the pattern recognition, the shape of it crystallized: a bounded memory kernel that tracks coherence relative to a goal, forgets what no longer serves, and hardens what persists. I didn't know it was control theory at the time. I just knew the shape from watching how systems actually work when you stop pretending they're simple. PhD was in the works until vibe coding democratized access to the cybernetic language that engineers have been gatekeeping for decades. What emerged -- independently, before any of this was code -- was a goal-conditioned bounded memory kernel. PLATO is the formalization. As above, so below.
+                Somewhere between the policy work and the pattern recognition, the shape of it crystallized: a bounded memory kernel that tracks coherence relative to a goal, forgets what no longer serves, and hardens what persists. I didn't know it was control theory at the time. I just knew the shape from watching how systems actually work when you stop pretending they're simple. BA in political science, MA in international relations. PhD was in the works until vibe coding democratized access to the cybernetic language that engineers have been gatekeeping for decades. What emerged -- independently, before any of this was code -- was a goal-conditioned bounded memory kernel. PLATO is the formalization.
             </p>
         </details>
 
@@ -343,74 +343,83 @@
                 </div>
             </div>
 
-            <h3 style="color: #f0c878; margin-top: 25px; margin-bottom: 15px;">Coherence Trajectory</h3>
-            <p style="margin-bottom: 15px; color: #d4a574;">
-                Cosine similarity between the system's action vector and goal vector. Approaches 1.0 asymptotically. Each instance is a discrete experiment.
-            </p>
+            <h3 style="color: #f0c878; margin-top: 25px; margin-bottom: 15px;">What's Actually Measured</h3>
 
             <div class="stats">
                 <div class="stat-box">
-                    <div class="stat-number">0.987</div>
-                    <div class="stat-label">Projected Coherence (12 instances)</div>
+                    <div class="stat-number">18</div>
+                    <div class="stat-label">Guidance Dimensions (real instrumentation)</div>
                 </div>
                 <div class="stat-box">
-                    <div class="stat-number">9</div>
-                    <div class="stat-label">Measurement Dimensions</div>
+                    <div class="stat-number">662</div>
+                    <div class="stat-label">Tests Passing</div>
                 </div>
                 <div class="stat-box">
-                    <div class="stat-number">r=-0.98</div>
-                    <div class="stat-label">Multi-Path vs Coherence</div>
+                    <div class="stat-number">5064</div>
+                    <div class="stat-label">Tracked Outcomes</div>
                 </div>
             </div>
 
+            <p style="margin-top: 15px; color: #d4a574; font-size: 0.9em;">
+                The guidance engine computes an 18-dimension system health vector. The signals engine runs Shannon entropy on inputs. The learner engine tracks UCB1 multi-armed bandit outcomes. Correlations are computed via numpy. What's missing: no p-value testing, no regression models, no formal hypothesis framework yet. The statistical claims from earlier instances are design targets, not proven results. Building the proof infrastructure is the current work.
+            </p>
+
             <h3 style="color: #f0c878; margin-top: 25px; margin-bottom: 15px;">What PLATO Actually Is</h3>
             <div class="code-block">
-Underneath 83 engines sits a Goal-Conditioned Bounded Memory Kernel:
+A bounded reasoning substrate built on three invariants:
 
-  S  = fixed-capacity state (what the system knows)
-  Ug = goal-conditioned update rule (how it learns)
-  C  = confidence: (alpha * beta * gamma * delta)^(1/4)
-       where alpha=logic, beta=frequency, gamma=coherence, delta=stability
-  F  = controlled forgetting (cognitive load management, not thermodynamics)
+1. THE SPINE (Flight Recorder)
+   COMMAND -> EVENT -> PROJECTION
+   Traceability, not determinism. The spine cannot prove WHY
+   you burned out. It can prove that 400 "High Effort" events
+   were logged with zero "Recovery" events. Accountability,
+   not causality.
 
-The kernel was derived independently (2019-2020) from watching how
-systems actually work -- policy, military, media, diplomacy -- before
-any of it was code. It turned out to be control theory.
+2. THE OFFICES (Bounded Agency)
+   13 offices with explicit read/write scopes. Each office has
+   a universal probe: READ -> NORMALIZE -> ASSESS (range check)
+   -> WRITE & EMIT. No discretionary decisions in the triggered
+   layer. The orchestrator reads the plan, executes the next task,
+   logs, updates. It does not think.
 
-THE INVARIANT: Traceability, not determinism.
-  COMMAND -> EVENT -> PROJECTION
-  The Spine is a Flight Recorder. It enforces accountability, not reality.
+3. THE REGISTRIES (Self-Describing)
+   IO Registry:     27 wireable sources and sinks
+   Office Registry: 13 offices with scope declarations
+   Range Registry:  Tunable thresholds per IO, managed only
+                    by the Range Governance Office
+   All SQLite-backed. All auditable.
 
-THE ARCHITECTURE: Elastic, not rigid.
-  High energy:  All offices active. Granular control.
-  Low energy:   Collapse to [SURVIVAL] [REST] [LOG].
-  The system auto-scales its bureaucracy based on available fuel.
+EPISTEMIC CONFIDENCE:
+  Every claim carries a 4-vector: (alpha, beta, gamma, delta)
+    alpha = deductive (logical certainty)
+    beta  = inductive (frequency in event store)
+    gamma = abductive (simplest explanation)
+    delta = simulative (predicted by strategy engine)
+  Confidence = (alpha * beta * gamma * delta)^(1/4)
+  A claim with high logic but low stability is a "Hypothesis."
+  A claim with high stability but low logic is "Folklore."
+  Both are stored, labeled correctly.
 
-THE STRATEGY: Torque, not averaging.
-  10 Generals apply rotational forces (pitch, yaw, roll).
-  SLERP interpolation produces spirals, flanks, pivots.
-  No paralyzed zero vectors. A temperature parameter allows
-  simulated annealing -- accepting temporary loss to escape
-  local traps.
+STRATEGY ENGINE:
+  10 generals apply torque, not position votes.
+  SLERP interpolation on a quaternion sphere produces spirals,
+  flanks, and pivots -- not paralyzed zero vectors.
+  Temperature parameter allows simulated annealing: accepting
+  temporary loss to escape local maxima.
 
-THE SIGNAL: Flow detection, not just failure detection.
-  Negative deviation: correction pulse.
-  Positive deviation: crystallization pulse. Update the model
-  to match the pilot when the pilot exceeds predictions.
+WHAT'S PROVEN:
+  - 18-dimension system health (real instrumentation)
+  - Shannon entropy on signal classification (real)
+  - UCB1 multi-armed bandit for outcome learning (real)
+  - Correlation matrices via numpy (real, no significance testing yet)
+  - 662 tests passing, 5064 tracked outcomes
 
-THE MEMORY: Cognitive Load Theory (Sweller), not thermodynamics.
-  We prune for attention, not for heat. New instances inherit
-  a Bootstrap Packet -- the context snapshot. Tabula rasa
-  episodically, but structurally continuous.
-
-GAPS STILL OPEN:
-  - Quarantine buffer for automated research (hallucination risk)
-  - Latent factor analysis on 3.7% residual variance
-  - Dashboard visualization of strategic orientation
-  - Exogenous shock modeling (unknown unknowns)
+WHAT'S NOT PROVEN YET:
+  - Statistical significance of coherence trajectory (no p-values)
+  - Orthogonality of latent factors (no factor analysis run)
+  - Quaternion strategy outputs validated against feasibility
   - Cold start convergence speed
-
-12 instances complete. All core hypotheses confirmed (p &lt; 0.001).
+  - Exogenous shock resilience
             </div>
 
             <div class="link-list">
@@ -507,18 +516,14 @@ TIER I:   Invariants
             </div>
 
             <div class="project">
-                <div class="project-title">Instance 12: Prove It</div>
+                <div class="project-title">Instance 12: Prove It (Or Admit You Can't)</div>
                 <div class="project-desc">
-                    Three hypotheses, all confirmed (p &lt; 0.001):<br>
-                    Multi-Path vs Coherence: r = -0.98 (as coherence rises, alternatives collapse).<br>
-                    Information Entropy vs Coherence: r = -0.83 (higher coherence = lower noise).<br>
-                    Learning Curvature: r = 0.00 (smooth trajectory, no oscillation).<br>
-                    Extended measurement from 6 to 9 dimensions. The trajectory is no longer theory. It's measured. What remains open: the 3.7% residual, the cold start problem, and whether the confidence metric (geometric mean) survives adversarial conditions.
+                    Three hypotheses formulated. Correlations computed via numpy (multi-path vs coherence, entropy vs coherence, learning curvature). Extended measurement protocol from 6 to 9 dimensions. But: no p-value infrastructure exists in the codebase. No scipy.stats, no regression models, no formal significance testing. The correlations were computed; their statistical significance was not. Instance 12 proved we can measure. It did not yet prove the measurements mean what we think they mean. Building the proof infrastructure is the next work.
                 </div>
                 <div class="tech-stack">
-                    <span class="tag">Hypothesis Testing</span>
+                    <span class="tag">Correlation Analysis</span>
                     <span class="tag">9 Dimensions</span>
-                    <span class="tag">Open Questions</span>
+                    <span class="tag">Proof Infrastructure Needed</span>
                 </div>
             </div>
         </details>
