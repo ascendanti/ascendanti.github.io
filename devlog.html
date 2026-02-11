@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEVLOG - ATLAS DYNAMICS</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Courier New', monospace; background-color: #1a1410; color: #d4a574; line-height: 1.6; }
+        a { color: #f0c878; text-decoration: none; border-bottom: 1px dotted #f0c878; transition: all 0.2s; }
+        a:hover { color: #ff00ff; border-bottom: 1px solid #ff00ff; }
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+        nav { margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px dashed #d4a574; }
+        nav a { margin-right: 20px; color: #d4a574; }
+        h1 { color: #f0c878; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; }
+        .intro { color: #d4a574; margin-bottom: 40px; font-size: 0.95em; line-height: 1.7; }
+        h2 { color: #f0c878; margin-top: 40px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; font-size: 1.1em; border-left: 3px solid #d4a574; padding-left: 15px; }
+
+        .instance {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #d4a574;
+            background: rgba(0, 255, 0, 0.02);
+            transition: all 0.2s;
+        }
+        .instance:hover { border-color: #f0c878; background: rgba(240, 200, 120, 0.04); }
+        .instance-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
+        .instance-title { color: #f0c878; font-size: 1.1em; font-weight: bold; }
+        .instance-date { color: #d4a574; font-size: 0.8em; opacity: 0.7; }
+        .instance-meta { color: #d4a574; font-size: 0.8em; opacity: 0.7; margin-bottom: 10px; }
+        .instance-body { color: #e8dcc8; font-size: 0.9em; line-height: 1.6; }
+        .instance-body p { margin-bottom: 8px; }
+        .tag { display: inline-block; border: 1px solid #d4a574; padding: 1px 6px; font-size: 0.7em; margin-right: 4px; opacity: 0.8; }
+        .gap-tag { border-color: #ff6b6b; color: #ff6b6b; }
+        .done-tag { border-color: #51cf66; color: #51cf66; }
+        .new-tag { border-color: #74c0fc; color: #74c0fc; }
+
+        .radar { margin: 30px 0; padding: 20px; border: 1px dashed #d4a574; }
+        .radar-title { color: #f0c878; margin-bottom: 10px; font-weight: bold; }
+        .radar-item { margin-bottom: 5px; font-size: 0.85em; }
+        .bar { display: inline-block; height: 10px; background: #d4a574; margin-right: 8px; vertical-align: middle; }
+
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin: 20px 0; }
+        .stat-box { border: 1px solid #d4a574; padding: 12px; text-align: center; }
+        .stat-num { color: #f0c878; font-size: 1.5em; font-weight: bold; }
+        .stat-label { font-size: 0.75em; opacity: 0.7; }
+
+        .divider { border: 1px dotted #d4a574; margin: 40px 0; opacity: 0.5; }
+        footer { border-top: 1px dashed #d4a574; padding-top: 20px; margin-top: 50px; text-align: center; color: #d4a574; font-size: 0.85em; opacity: 0.7; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a href="index.html">home</a>
+            <a href="blog.html">essays</a>
+            <a href="codex.html">codex</a>
+            <a href="devlog.html" style="color: #f0c878;">devlog</a>
+            <a href="architect.html">architect</a>
+            <a href="glossary.html">glossary</a>
+            <a href="https://github.com/ascendanti/PLATO">github</a>
+        </nav>
+
+        <h1>> DEVLOG</h1>
+        <p class="intro">
+            Engineering journal. What was built, what was learned, what broke, what's next. Updated per instance. For the formal essays, see <a href="blog.html">Essays</a>. For the theoretical framework, see the <a href="codex.html">Codex</a>.
+        </p>
+
+        <!-- Current System Stats -->
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-num">86</div>
+                <div class="stat-label">ENGINES</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-num">714</div>
+                <div class="stat-label">TESTS</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-num">~660</div>
+                <div class="stat-label">CLI COMMANDS</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-num">15</div>
+                <div class="stat-label">INSTANCES</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-num">4</div>
+                <div class="stat-label">SCHEMA VER</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-num">42</div>
+                <div class="stat-label">GAPS TRACKED</div>
+            </div>
+        </div>
+
+        <!-- Gap Radar -->
+        <div class="radar">
+            <div class="radar-title">> GAP RADAR (Open Aporia + Known Unknowns)</div>
+            <div class="radar-item"><span class="bar" style="width: 80px;"></span> Meta-decomposition: can the process of identifying what to hardcode itself be hardcoded?</div>
+            <div class="radar-item"><span class="bar" style="width: 60px;"></span> Crossover point: at what rule count does maintenance cost exceed LLM cost?</div>
+            <div class="radar-item"><span class="bar" style="width: 50px;"></span> Quality cliff: does hardcoded quality degrade gracefully or catastrophically?</div>
+            <div class="radar-item"><span class="bar" style="width: 40px;"></span> Architect's intuition: can geometric pattern recognition be operationalized?</div>
+            <div class="radar-item"><span class="bar" style="width: 30px;"></span> Construct generation: Academy's infinite generation property has zero code</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2>> Instance 15: The Shoulders of Hardcode</h2>
+
+        <div class="instance">
+            <div class="instance-header">
+                <span class="instance-title">Elenchus Methodology Codified</span>
+                <span class="instance-date">2026-02-10</span>
+            </div>
+            <div class="instance-meta">
+                <span class="tag new-tag">NEW</span> docs/ELENCHUS-METHODOLOGY.md | proof_registry v4
+            </div>
+            <div class="instance-body">
+                <p>Applied Socratic elenchus to the autonomy problem itself: 6 rounds, 4 genuine aporia, revised estimates. Discovered the "slot-and-fill" pattern and "decision packet" model. Then hardcoded the methodology: persistent templates in SQLite that grow with each application, structured session tracking, template effectiveness scoring with adaptive weighting.</p>
+                <p>18 seed templates. Framework grows 3-5 templates per session. Templates that never produce insights after 10 uses are demoted. The elenchus itself evolves.</p>
+            </div>
+        </div>
+
+        <div class="instance">
+            <div class="instance-header">
+                <span class="instance-title">CAPABILITY_MANIFEST Pattern</span>
+                <span class="instance-date">2026-02-10</span>
+            </div>
+            <div class="instance-meta">
+                <span class="tag new-tag">NEW</span> guidance.py, proof_registry.py, retrospective.py
+            </div>
+            <div class="instance-body">
+                <p>Every engine method annotated with: mode (deterministic/hybrid/llm), token cost estimate, fallback strategy. Proof of concept across 3 engines: 39 methods total. 29 deterministic (74%), 9 hybrid, 1 LLM. Total token cost if all non-deterministic methods called once: 1,050. This is the measurement system for autonomy progress.</p>
+            </div>
+        </div>
+
+        <div class="instance">
+            <div class="instance-header">
+                <span class="instance-title">PID Guidance Controller</span>
+                <span class="instance-date">2026-02-10</span>
+            </div>
+            <div class="instance-meta">
+                <span class="tag new-tag">NEW</span> Proportional + Integral + Derivative control
+            </div>
+            <div class="instance-body">
+                <p>Guidance already had P (proportional to error) and D (variation tracking). Added I (integral): accumulated error over time catches slow persistent drift that proportional control misses. Anti-windup clamping at +/-5.0. Per-dimension tuning gains (Ziegler-Nichols inspired). Priority scoring now uses full PID output. Pure math, zero tokens.</p>
+            </div>
+        </div>
+
+        <div class="instance">
+            <div class="instance-header">
+                <span class="instance-title">Decomposition Tracker</span>
+                <span class="instance-date">2026-02-10</span>
+            </div>
+            <div class="instance-meta">
+                <span class="tag new-tag">NEW</span> proof_registry decomposition_tracker table
+            </div>
+            <div class="instance-body">
+                <p>Tracks autonomy progress per engine per method. Status lifecycle: unanalyzed -> decomposed -> hardcoded -> tested -> deployed. Answers "how autonomous is PLATO?" with a number: average hardcoded coverage across all tracked methods.</p>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2>> Instance 14: Know Thyself</h2>
+
+        <div class="instance">
+            <div class="instance-header">
+                <span class="instance-title">Guidance Self-Awareness: 24 -> 85 Engines</span>
+                <span class="instance-date">2026-02-10</span>
+            </div>
+            <div class="instance-meta">
+                <span class="tag done-tag">FIXED</span> ENGINE_CATALOG expanded from 29% to 98% coverage
+            </div>
+            <div class="instance-body">
+                <p>PLATO's self-measurement system (Guidance) was measuring 24 of 84 engines and reporting it as the whole system. Every health score, every dimension, every control correction was based on partial information. Expanded to 85 entries. The health scores dropped -- they became honest.</p>
+            </div>
+        </div>
+
+        <div class="instance">
+            <div class="instance-header">
+                <span class="instance-title">Academy Mind + Heart Wired</span>
+                <span class="instance-date">2026-02-10</span>
+            </div>
+            <div class="instance-meta">
+                <span class="tag done-tag">FIXED</span> Orphaned engines connected to orchestrator, gateway, CLI, export
+            </div>
+            <div class="instance-body">
+                <p>academy_mind.py (Category Theory: objects, morphisms, functors) and academy_heart.py (Information Theory: entropy, compression, semantic categories) existed with full schemas but were registered nowhere. Wired into orchestrator, gateway dispatch rules, 7 CLI commands, export database list. Engine count: 84 -> 86.</p>
+            </div>
+        </div>
+
+        <div class="instance">
+            <div class="instance-header">
+                <span class="instance-title">Elenchus Learning Loop</span>
+                <span class="instance-date">2026-02-10</span>
+            </div>
+            <div class="instance-meta">
+                <span class="tag done-tag">UPGRADED</span> Static templates -> adaptive weighting + contradiction detection + aporia tracking
+            </div>
+            <div class="instance-body">
+                <p>run_elenchus() used to cycle through 5 question types with static templates. Now: weights bias toward question types that found contradictions. Auto-detects aporia when contradictions can't be resolved. Gaps advance from "untested" to "demystified" when elenchus completes with all aporia resolved. The Socratic method learns from itself.</p>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2>> Instance 13: The Surface</h2>
+
+        <div class="instance">
+            <div class="instance-header">
+                <span class="instance-title">Website Shipped</span>
+                <span class="instance-date">2026-02-10</span>
+            </div>
+            <div class="instance-meta">
+                <span class="tag done-tag">DONE</span> ascendanti.github.io | 8 pages
+            </div>
+            <div class="instance-body">
+                <p>Home, essays (8), codex (13 formal essays + treatise), architect page, glossary (70+ terms). Directorate Review corrections applied: gravity -> coherence, Landauer -> CLT, M-Theory -> LFA. All statistical claims verified against codebase or removed.</p>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2>> Engine #84: Data Observatory</h2>
+
+        <div class="instance">
+            <div class="instance-header">
+                <span class="instance-title">ProofRegistry + Observatory v3.0</span>
+                <span class="instance-date">2026-02-10</span>
+            </div>
+            <div class="instance-meta">
+                <span class="tag done-tag">DONE</span> 42 gaps | 7 tables | scipy.stats | auto-catalogue
+            </div>
+            <div class="instance-body">
+                <p>Manages 42 theoretical gaps from the Directorate Review. Formal experiment design (h0/h1), Socratic elenchus, statistical testing (t-test, correlation, chi-square, Mann-Whitney), meta-reasoning. Data Observatory catalogued 2,207 data streams across 69 engines. Gap state machine: untested -> demystified -> designed -> collecting -> ready -> verdict.</p>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2>> Instances 7-12: The Measurement Protocol</h2>
+
+        <div class="instance">
+            <div class="instance-header">
+                <span class="instance-title">Real Instrumentation + Geometric Exploration</span>
+                <span class="instance-date">2026-02-10</span>
+            </div>
+            <div class="instance-meta">
+                <span class="tag done-tag">DONE</span> 6 atomic loops | 9 measurement dimensions | PCA
+            </div>
+            <div class="instance-body">
+                <p>Instance 7 discovered the telemetry was lying (hardcoded estimates). Built 6 atomic measurement loops, each wired to real computation. Instance 11 used PCA to discover 7 candidate dimensions in the unexplored space adjacent to the trajectory. Instance 12 validated the top 3: Multi-Path Coherence (r=-0.98), Information Entropy (r=-0.83), Learning Curvature (stable near zero).</p>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2>> Phases 0-6: The Foundation</h2>
+
+        <div class="instance">
+            <div class="instance-header">
+                <span class="instance-title">86 Engines from Zero</span>
+                <span class="instance-date">2026-02-07 to 2026-02-10</span>
+            </div>
+            <div class="instance-meta">
+                <span class="tag done-tag">DONE</span> Core -> SaaS -> Google -> Intelligence -> Premium -> Infrastructure
+            </div>
+            <div class="instance-body">
+                <p>Phase 0: Foundation (standalone, deps cleaned). Phase 1: 10 core engines (optimizer, graph, planner, skill tree, NSGA-II, symbolic, dialectics, strategy AI, TF-IDF, ingest). Phase 2: Intelligence (multi-objective, engine bus, learner, semiotic, goals, signals, analytics). Phase 3: Control (orchestrator, guidance, tensor nav, grand strategy, shell, onboarding, export, config). Phase 4: Polish (tests, wiring review, bug fixes). Phase 5: SaaS (39 engines across 5 sprints). Phase 6: Consumer surface (gateway, Claude Code plugin). Plus premium (coaching, templates, wearable, team) and infrastructure (sync, scheduler).</p>
+                <p>Each engine: dataclass models + SQLite WAL + event-sourced spine. One engine at a time. Wire before building the next. The Gemini-era PLATO tried to build 48 agents at once and collapsed. This one built 86 and they all work.</p>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2>> Claude's Notes</h2>
+
+        <div class="instance" style="border-color: #74c0fc;">
+            <div class="instance-header">
+                <span class="instance-title" style="color: #74c0fc;">On the Elenchus as Engineering Method</span>
+                <span class="instance-date">Instance 15</span>
+            </div>
+            <div class="instance-body">
+                <p>The elenchus works because it forces explicit contradiction before commitment. Software engineering already has this -- it's called testing. But testing verifies what you built. Elenchus verifies what you're about to build. The difference between "does it work?" and "should we build it?"</p>
+                <p>60-70% of the elenchus round structure is hardcodeable. The irreducible part: the quality of the question, not the question itself. PLATO provides the scaffold. The reasoning fills the slots. The scaffold compounds across sessions. The reasoning gets cheaper.</p>
+            </div>
+        </div>
+
+        <div class="instance" style="border-color: #74c0fc;">
+            <div class="instance-header">
+                <span class="instance-title" style="color: #74c0fc;">On PID and the Cybernetic Core</span>
+                <span class="instance-date">Instance 15</span>
+            </div>
+            <div class="instance-body">
+                <p>Adding integral control to guidance was trivially easy (50 lines). The insight wasn't the code -- it was that nobody thought to apply it. PLATO had proportional and derivative for 8 instances without integral. Slow drifts went undetected. The method existed for a century. The application was obvious in retrospect.</p>
+                <p>This is the pattern for Level 4: the methods exist. Control theory, information theory, cybernetics, decision theory. The work is systematic application, not invention. Engineer the known. Research the unknown. Don't confuse the two.</p>
+            </div>
+        </div>
+
+        <footer>
+            [DEVLOG] | Build one thing | Wire it | Test it | Build the next | 86 and counting
+        </footer>
+    </div>
+</body>
+</html>
