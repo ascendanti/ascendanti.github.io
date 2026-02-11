@@ -305,7 +305,7 @@
                 I study chaos for a living. Started in policy research and international relations -- how do actors with competing interests, no shared information, and no central authority produce anything resembling order? That question set the trajectory. I built custom weighted methodologies to turn qualitative concepts like "security" and "governance" into things you can actually measure, compare, and act on. The IR literature calls this operationalization. I call it the only honest way to think about anything.
             </p>
             <p style="margin-bottom: 15px; line-height: 1.7;">
-                Then I went looking for the same problem in other uniforms. Intergovernmental strategy and regional integration first -- implementing policy across tiers from national frameworks down to impact on the individual. Media next -- production, digital innovation, eventually tapped for chief editor. A stint as a director at an energy company. Then into the murky world of defense procurement and R&D. Did time as an infantry officer, where the same constraint satisfaction problem has a deadline measured in heartbeats instead of fiscal quarters. Then tapped for GM of a media corporation -- building the infrastructure for new media, aligning 80+ people toward coherent output, which is organizational cybernetics whether anyone calls it that or not. Three languages, 35+ relocations, every domain insisting it's unique. None of them are. The binding constraint is always the same: <em>navigate feasible space with incomplete information toward a goal</em>.
+                Then I went looking for the same problem in other uniforms. Intergovernmental strategy and regional integration first -- implementing policy across tiers from national frameworks down to impact on the individual. Media next -- production, digital innovation, eventually tapped for chief editor. A stint as a director at an energy company. Then tapped for GM of a media corporation -- building the infrastructure for new media, aligning 80+ people toward coherent output, which is organizational cybernetics whether anyone calls it that or not. Three languages, 35+ relocations, every domain insisting it's unique. None of them are. The binding constraint is always the same: <em>navigate feasible space with incomplete information toward a goal</em>.
             </p>
             <p style="margin-bottom: 15px; line-height: 1.7;">
                 The shape of what I was looking at crystallized somewhere between the policy work and the pattern matching: a bounded memory kernel. Tracks coherence relative to a goal. Forgets what costs more to maintain than to discard. Hardens what survives. I didn't have the vocabulary for it yet -- that came later when I realized I'd been doing control theory by hand for years. A PhD was in the plans -- deferred it to work on some concepts first. Turns out vibe coding cracked open the cybernetic language that engineers have been gatekeeping for decades. Political science studies chaotic systems but is conservative in the methods it uses. Maybe a poli sci-cybernetics convergence is in the making. Now I build the substrate directly. PLATO is what happens when you stop describing the algorithm and start running it.
@@ -315,9 +315,9 @@
         <div class="divider"></div>
 
         <details open>
-            <summary><h2>PLATO</h2><span class="one-liner">Local-first intelligence substrate -- 83 engines, SQLite, zero cloud</span></summary>
+            <summary><h2>PLATO</h2><span class="one-liner">Local-first intelligence substrate -- 84 engines, SQLite, zero cloud</span></summary>
             <p style="margin-bottom: 15px;">
-                A local-first intelligence substrate. 83 engines running on SQLite, event-sourced, deterministic, fully observable. No cloud. No API calls home. The system observes, measures, compresses, and learns. It tracks coherence relative to a goal using bounded memory -- fixed-capacity state, goal-conditioned updates, controlled forgetting. The first dataset is a human life because that's the hardest problem: fuzzy causality, incomplete information, non-convex optimization landscapes, and a pilot who sometimes stops logging for three days because they got the flu. If it works here, it works anywhere.
+                A local-first intelligence substrate. 84 engines running on SQLite, event-sourced, deterministic, fully observable. No cloud. No API calls home. The system observes, measures, compresses, and learns. It tracks coherence relative to a goal using bounded memory -- fixed-capacity state, goal-conditioned updates, controlled forgetting. The first dataset is a human life because that's the hardest problem: fuzzy causality, incomplete information, non-convex optimization landscapes, and a pilot who sometimes stops logging for three days because they got the flu. If it works here, it works anywhere.
             </p>
 
             <div class="box">
@@ -327,11 +327,11 @@
                 </div>
                 <div class="status-line">
                     <span class="status-label">engines:</span>
-                    <span class="status-value">83 microservices (all operational)</span>
+                    <span class="status-value">84 microservices (all operational)</span>
                 </div>
                 <div class="status-line">
                     <span class="status-label">test_coverage:</span>
-                    <span class="status-value">662+ tests passing</span>
+                    <span class="status-value">684 tests passing</span>
                 </div>
                 <div class="status-line">
                     <span class="status-label">architecture:</span>
@@ -396,7 +396,7 @@ WHAT'S PROVEN:
   - Shannon entropy on signal classification (real)
   - UCB1 multi-armed bandit for outcome learning (real)
   - Correlation matrices via numpy (real, no significance testing yet)
-  - 662 tests passing, 5064 tracked outcomes
+  - 684 tests passing, 5692 tracked outcomes
 
 WHAT'S NOT PROVEN YET:
   - Statistical significance of coherence trajectory (no p-values)
@@ -404,6 +404,18 @@ WHAT'S NOT PROVEN YET:
   - Quaternion strategy outputs validated against feasibility
   - Cold start convergence speed
   - Exogenous shock resilience
+
+DATA OBSERVATORY (v3.0):
+  The system now indexes its own measurement surface.
+  - 2207 data streams catalogued across 69 engines
+  - 42 falsifiable gaps registered (all untested)
+  - Constraint wall: 7 blocker categories tracked
+  - Evidence types: formal | empirical | narrative | metaphorical
+  - Gap state machine: untested > demystified > designed >
+    collecting > ready > verdict
+  - 31 CLI commands under `plato proof`
+  - Infrastructure is built. No tests have been run.
+    The system can now prove or refute its own claims.
             </div>
 
             <div class="link-list">
@@ -420,10 +432,10 @@ WHAT'S NOT PROVEN YET:
             <div class="code-block">
 TIER V:   Execution Surface
             Gateway (deterministic intent dispatch)
-            CLI (609 commands, 76 groups)
+            CLI (623 commands, 76 groups)
             Plugin (Claude Code integration)
 
-TIER IV:  Capability Engines (83 total)
+TIER IV:  Capability Engines (84 total)
             Elastic: all active at high energy,
             collapse to [SURVIVAL][REST][LOG] at low energy
 
@@ -524,7 +536,7 @@ TIER I:   Invariants
         </details>
 
         <footer>
-[END_TRANSMISSION] | 83 engines | 12 instances | Status: OPERATIONAL | Gaps: open
+[END_TRANSMISSION] | 84 engines | 12 instances | Status: OPERATIONAL | Gaps: open
         </footer>
     </div>
 </body>
