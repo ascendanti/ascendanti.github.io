@@ -325,7 +325,7 @@
             <div class="box">
                 <div class="status-line">
                     <span class="status-label">status:</span>
-                    <span class="status-value pulse">ACTIVE | Instance 17 Complete</span>
+                    <span class="status-value pulse">ACTIVE | Instance 20 Complete</span>
                 </div>
                 <div class="status-line">
                     <span class="status-label">engines:</span>
@@ -333,7 +333,7 @@
                 </div>
                 <div class="status-line">
                     <span class="status-label">test_coverage:</span>
-                    <span class="status-value">737 tests passing</span>
+                    <span class="status-value">750 tests passing</span>
                 </div>
                 <div class="status-line">
                     <span class="status-label">architecture:</span>
@@ -341,13 +341,13 @@
                 </div>
                 <div class="status-line">
                     <span class="status-label">instances_completed:</span>
-                    <span class="status-value">16 (<a href="devlog.html" style="border-bottom: 1px dotted #f0c878;">full log</a>)</span>
+                    <span class="status-value">20 (<a href="devlog.html" style="border-bottom: 1px dotted #f0c878;">full log</a>)</span>
                 </div>
             </div>
 
             <h3 style="color: #f0c878; margin-top: 25px; margin-bottom: 15px;">Current State</h3>
             <p style="margin-bottom: 15px; color: #d4a574; font-size: 0.95em;">
-                The measurement infrastructure works. What it measures and what it proves are deliberately kept separate. The guidance engine computes an 18-dimension system health vector with PID control. The proof system tracks 42 knowledge gaps through structured elenchus -- 5 demystified so far, 8 genuine aporia discovered and resolved. The system knows what it knows and what it doesn't. No claims on this site exceed what the code can demonstrate. For the full engineering log, see the <a href="devlog.html">devlog</a>.
+                The measurement infrastructure works. The proof system tested 17 of its own hypotheses: 8 supported, 8 refuted, 1 inconclusive. The refutations are the interesting part &mdash; dimensions assumed independent are coupled, outcome rewards show no improvement over time, strategy states are not predictable from current data. No claims on this site exceed what the code can demonstrate. For the full engineering log, see the <a href="devlog.html">devlog</a>.
             </p>
 
             <h3 style="color: #f0c878; margin-top: 25px; margin-bottom: 15px;">What PLATO Actually Is</h3>
@@ -393,31 +393,36 @@ STRATEGY ENGINE:
   Temperature parameter allows simulated annealing: accepting
   temporary loss to escape local maxima.
 
-WHAT'S PROVEN:
-  - 18-dimension system health (real instrumentation)
-  - Shannon entropy on signal classification (real)
-  - UCB1 multi-armed bandit for outcome learning (real)
-  - Correlation matrices via numpy (real, no significance testing yet)
-  - 714 tests passing, 5692 tracked outcomes
+WHAT'S BEEN TESTED (Instance 18):
+  17 hypotheses tested via scipy.stats. Results:
+  - 8 SUPPORTED (convergence, PID correlation, PCA
+    dimensionality, geometric mean veto, TF-IDF retrieval,
+    UCB1 learning, friction proxy)
+  - 8 REFUTED (dimension independence, goal distribution,
+    event distribution, entropy by status, reward trend,
+    optimizer convergence, Clausewitz coverage, state
+    predictability)
+  - 1 INCONCLUSIVE (reward schedule)
+  - 750 tests passing, 7288 tracked outcomes
 
 WHAT'S NOT PROVEN YET:
-  - Statistical significance of coherence trajectory (no p-values)
-  - Orthogonality of latent factors (no factor analysis run)
   - Quaternion strategy outputs validated against feasibility
   - Cold start convergence speed
   - Exogenous shock resilience
+  - Whether any of this changes actual behavior
 
-DATA OBSERVATORY (v3.0):
-  The system now indexes its own measurement surface.
-  - 2207 data streams catalogued across 69 engines
-  - 42 falsifiable gaps registered (all untested)
+DATA OBSERVATORY (v4.0):
+  The system indexes its own measurement surface.
+  - 2,401 data streams catalogued across 73 engines
+  - 42 falsifiable gaps registered (20 advanced past untested)
+  - 21 formal experiments designed with H0/H1 hypotheses
   - Constraint wall: 7 blocker categories tracked
   - Evidence types: formal | empirical | narrative | metaphorical
   - Gap state machine: untested > demystified > designed >
     collecting > ready > verdict
-  - 31 CLI commands under `plato proof`
-  - Infrastructure is built. No tests have been run.
-    The system can now prove or refute its own claims.
+  - 38 CLI commands under `plato proof`
+  - The system can prove or refute its own claims.
+    It has done both.
             </div>
 
             <div class="link-list">
@@ -434,10 +439,10 @@ DATA OBSERVATORY (v3.0):
             <div class="code-block">
 TIER V:   Execution Surface
             Gateway (deterministic intent dispatch)
-            CLI (649 commands, 78 groups)
+            CLI (671 commands, 80 groups)
             Plugin (Claude Code integration)
 
-TIER IV:  Capability Engines (84 total)
+TIER IV:  Capability Engines (87 total)
             Elastic: all active at high energy,
             collapse to [SURVIVAL][REST][LOG] at low energy
 
@@ -473,7 +478,7 @@ TIER I:   Invariants
         </details>
 
         <footer>
-[END_TRANSMISSION] | 87 engines | 17 instances | Status: OPERATIONAL | Gaps: open
+[END_TRANSMISSION] | 87 engines | 20 instances | Status: OPERATIONAL | Gaps: open
         </footer>
     </div>
 </body>
