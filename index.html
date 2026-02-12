@@ -324,15 +324,15 @@
             <div class="box">
                 <div class="status-line">
                     <span class="status-label">status:</span>
-                    <span class="status-value pulse">ACTIVE | Instance 12 Complete</span>
+                    <span class="status-value pulse">ACTIVE | Instance 16 Complete</span>
                 </div>
                 <div class="status-line">
                     <span class="status-label">engines:</span>
-                    <span class="status-value">84 microservices (all operational)</span>
+                    <span class="status-value">87 (all operational)</span>
                 </div>
                 <div class="status-line">
                     <span class="status-label">test_coverage:</span>
-                    <span class="status-value">714 tests passing</span>
+                    <span class="status-value">727 tests passing</span>
                 </div>
                 <div class="status-line">
                     <span class="status-label">architecture:</span>
@@ -340,13 +340,13 @@
                 </div>
                 <div class="status-line">
                     <span class="status-label">instances_completed:</span>
-                    <span class="status-value">12 (Measurement > Convergence > Climb > Exploration > Extension)</span>
+                    <span class="status-value">16 (<a href="devlog.html" style="border-bottom: 1px dotted #f0c878;">full log</a>)</span>
                 </div>
             </div>
 
             <h3 style="color: #f0c878; margin-top: 25px; margin-bottom: 15px;">Current State</h3>
             <p style="margin-bottom: 15px; color: #d4a574; font-size: 0.95em;">
-                The measurement infrastructure works. What it measures and what it proves are deliberately kept separate. The guidance engine computes an 18-dimension system health vector. The signals engine classifies inputs by Shannon entropy. The learner tracks multi-armed bandit outcomes across 5000+ decisions. Correlations are computed; their statistical significance is not -- that's the next work. No claims on this site exceed what the code can demonstrate.
+                The measurement infrastructure works. What it measures and what it proves are deliberately kept separate. The guidance engine computes an 18-dimension system health vector with PID control. The proof system tracks 42 knowledge gaps through structured elenchus -- 5 demystified so far, 8 genuine aporia discovered and resolved. The system knows what it knows and what it doesn't. No claims on this site exceed what the code can demonstrate. For the full engineering log, see the <a href="devlog.html">devlog</a>.
             </p>
 
             <h3 style="color: #f0c878; margin-top: 25px; margin-bottom: 15px;">What PLATO Actually Is</h3>
@@ -458,71 +458,6 @@ TIER I:   Invariants
             <p style="margin-top: 20px; margin-bottom: 15px;">
                 Everything is SQLite. No cloud. Fully observable. Deterministic routing via regex. The orchestrator is deliberately stupid -- it does not think. Intelligence is distributed across bounded offices that read only what they need and write only what they own.
             </p>
-        </details>
-
-        <div class="divider"></div>
-
-        <details>
-            <summary><h2>INSTANCE LOG</h2><span class="one-liner">12 experiments -- measurement, learning, trajectory, latent factors, proof</span></summary>
-            <p style="margin-bottom: 20px; color: #d4a574; line-height: 1.7;">
-                Each instance is a discrete experiment with a specific hypothesis. The system advances only when the measurements say it does.
-            </p>
-
-            <div class="project">
-                <div class="project-title">Instance 7-8: Kill the Fiction</div>
-                <div class="project-desc">
-                    Discovered the telemetry system was lying -- hardcoded estimates dressed as measurements. Confidence scores that never changed. The system was reading its own press releases. Anyone who's worked in journalism recognises this failure mode. Built 6 atomic measurement loops, each wired to actual computation. No estimates, no proxies. The real numbers were worse and infinitely more useful.
-                </div>
-                <div class="tech-stack">
-                    <span class="tag">Measurement Protocol</span>
-                    <span class="tag">Real Instrumentation</span>
-                </div>
-            </div>
-
-            <div class="project">
-                <div class="project-title">Instance 9: Does It Actually Learn?</div>
-                <div class="project-desc">
-                    Ran 5 complete decision cycles with persistent measurement state. Learning rate improved from 1.14x to 1.25x across cycles. Measurements persisted correctly across boundaries. First evidence that the system learns better with each cycle, not worse. First evidence of the climb.
-                </div>
-                <div class="tech-stack">
-                    <span class="tag">Multi-Cycle Learning</span>
-                    <span class="tag">Convergence Proof</span>
-                </div>
-            </div>
-
-            <div class="project">
-                <div class="project-title">Instance 10: Is the Trajectory Real or Artifact?</div>
-                <div class="project-desc">
-                    Projected 20-instance trajectory. Formula: 0.3 + 0.7 * (1 - exp(-t/5)). Coherence climbs from 0.427 to 0.987. Just a saturating exponential -- the step response of a first-order system with time constant 5. Every control engineer has seen this curve. Nothing mystical about it. But the question was whether the landscape is convex or rugged. If there are local traps, pure gradient descent gets stuck. Added simulated annealing to the strategy engine as insurance.
-                </div>
-                <div class="tech-stack">
-                    <span class="tag">Asymptotic Analysis</span>
-                    <span class="tag">Non-Convex Landscape</span>
-                </div>
-            </div>
-
-            <div class="project">
-                <div class="project-title">Instance 11: What Can't We See?</div>
-                <div class="project-desc">
-                    PCA on the coherence trajectory: 96.3% variance in one component. 3.7% residual is structured and periodic. Either beautifully coherent or dangerously narrow. Identified 7 candidate latent factors the existing protocol couldn't capture. Not hidden dimensions of the universe -- latent factor analysis on system noise. The structure reveals what the measurement protocol is missing.
-                </div>
-                <div class="tech-stack">
-                    <span class="tag">PCA Decomposition</span>
-                    <span class="tag">Latent Factor Analysis</span>
-                </div>
-            </div>
-
-            <div class="project">
-                <div class="project-title">Instance 12: Prove It (Or Admit You Can't)</div>
-                <div class="project-desc">
-                    Three hypotheses formulated. Correlations computed via numpy (multi-path vs coherence, entropy vs coherence, learning curvature). Extended measurement protocol from 6 to 9 dimensions. But: no p-value infrastructure exists in the codebase. No scipy.stats, no regression models, no formal significance testing. The correlations were computed; their statistical significance was not. Instance 12 proved we can measure. It did not yet prove the measurements mean what we think they mean. Building the proof infrastructure is the next work.
-                </div>
-                <div class="tech-stack">
-                    <span class="tag">Correlation Analysis</span>
-                    <span class="tag">9 Dimensions</span>
-                    <span class="tag">Proof Infrastructure Needed</span>
-                </div>
-            </div>
         </details>
 
         <div class="divider"></div>
