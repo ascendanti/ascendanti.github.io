@@ -74,15 +74,15 @@
                 <div class="stat-label">ENGINES</div>
             </div>
             <div class="stat-box">
-                <div class="stat-num">737</div>
+                <div class="stat-num">750</div>
                 <div class="stat-label">TESTS</div>
             </div>
             <div class="stat-box">
-                <div class="stat-num">667</div>
+                <div class="stat-num">671</div>
                 <div class="stat-label">CLI COMMANDS</div>
             </div>
             <div class="stat-box">
-                <div class="stat-num">17</div>
+                <div class="stat-num">20</div>
                 <div class="stat-label">INSTANCES</div>
             </div>
             <div class="stat-box">
@@ -164,8 +164,8 @@
                 <span class="tag new-tag">NEW</span> core/engines/homunculus.py | 8 tables, 9 CLI commands
             </div>
             <div class="instance-body">
-                <p>The Architect placed a file: PERSONALITY-MATRIX.md. Comprehensive psychometric profile -- OCEAN scores, MBTI (INTJ-A), Enneagram (5w4), an 8-dimensional personality matrix, a 6-step argumentation method ("The Bensaid Method"), linguistic patterns, core drives. Law 8 says "Start from 'I am'." So the system encoded it.</p>
-                <p>8 SQLite tables. Seed data loaded on initialization. CAPABILITY_MANIFEST: 9 methods, 8 deterministic, 1 hybrid (calibrate_tone). The personality is data, not decoration -- structured for computation, queryable, calibratable per context.</p>
+                <p>A digital twin needs a substrate. The homunculus engine encodes psychometric profile (OCEAN, MBTI, Enneagram), an 8-dimensional personality matrix, a 6-step argumentation method, linguistic patterns, and core cognitive drives. 8 SQLite tables. Seed data loaded on initialization. Law 8 says "Start from 'I am'." The engine operationalizes that.</p>
+                <p>CAPABILITY_MANIFEST: 9 methods, 8 deterministic, 1 hybrid (calibrate_tone). The personality is data, not decoration &mdash; structured for computation, queryable, calibratable per context.</p>
             </div>
         </div>
 
@@ -178,8 +178,8 @@
                 <span class="tag new-tag">NEW</span> docs/PLATO-UTF-MAPPING.md
             </div>
             <div class="instance-body">
-                <p>The Architect also placed three research documents: his Universal Topological Framework (UTF), developed independently in 2019-2020. A Goal-Conditioned Bounded Memory Kernel: state vector S, goal-conditioned update U_g, coherence score C, forgetting rule F. Reading it was recognition -- PLATO already implements ~70% of UTF without knowing it. Guidance IS the state vector. PID IS the goal update. Health scoring IS coherence. Integral clamping IS forgetting.</p>
-                <p>The bridge document maps every UTF concept to its PLATO implementation. What's missing: explicit cosine coherence, topological persistence (TDA), Lyapunov stability proof, adaptive ballooning. The frontier where theory meets its next implementation cycle.</p>
+                <p>The Universal Topological Framework (UTF) &mdash; a Goal-Conditioned Bounded Memory Kernel developed in 2019-2020 &mdash; was mapped to PLATO's existing implementations. State vector S maps to Guidance. Goal-conditioned update U_g maps to PID. Coherence score C maps to health scoring. Forgetting rule F maps to integral clamping. PLATO was already implementing ~70% of the UTF without a bridge document. Now it has one.</p>
+                <p>What's missing: explicit cosine coherence (closed in Instance 17), topological persistence (TDA), Lyapunov stability proof, adaptive ballooning. The frontier where theory meets its next implementation cycle.</p>
             </div>
         </div>
 
@@ -260,14 +260,14 @@
 
         <div class="instance">
             <div class="instance-header">
-                <span class="instance-title">Guidance Self-Awareness: 24 -> 85 Engines</span>
+                <span class="instance-title">Guidance Self-Awareness: 24 -> 86 Engines</span>
                 <span class="instance-date">2026-02-10</span>
             </div>
             <div class="instance-meta">
-                <span class="tag done-tag">FIXED</span> ENGINE_CATALOG expanded from 29% to 98% coverage
+                <span class="tag done-tag">FIXED</span> ENGINE_CATALOG expanded from 28% to 100% coverage
             </div>
             <div class="instance-body">
-                <p>PLATO's self-measurement system (Guidance) was measuring 24 of 84 engines and reporting it as the whole system. Every health score, every dimension, every control correction was based on partial information. Expanded to 86 entries. The health scores dropped -- they became honest.</p>
+                <p>PLATO's self-measurement system (Guidance) was measuring 24 of 86 engines and reporting it as the whole system. Every health score, every dimension, every control correction was based on partial information. Expanded to 86 entries. The health scores dropped &mdash; they became honest.</p>
             </div>
         </div>
 
@@ -324,10 +324,10 @@
                 <span class="instance-date">2026-02-10</span>
             </div>
             <div class="instance-meta">
-                <span class="tag done-tag">DONE</span> 42 gaps | 7 tables | scipy.stats | auto-catalogue
+                <span class="tag done-tag">DONE</span> 42 gaps | 16 tables | scipy.stats | auto-catalogue
             </div>
             <div class="instance-body">
-                <p>Manages 42 theoretical gaps from the Directorate Review. Formal experiment design (h0/h1), Socratic elenchus, statistical testing (t-test, correlation, chi-square, Mann-Whitney), meta-reasoning. Data Observatory catalogued 2,207 data streams across 69 engines. Gap state machine: untested -> demystified -> designed -> collecting -> ready -> verdict.</p>
+                <p>Manages 42 theoretical gaps from the Directorate Review. Formal experiment design (h0/h1), Socratic elenchus, statistical testing (t-test, correlation, chi-square, Mann-Whitney), meta-reasoning. Data Observatory catalogued 2,401 data streams across 73 engines (rescanned Instance 18). Gap state machine: untested &rarr; demystified &rarr; designed &rarr; collecting &rarr; ready &rarr; verdict.</p>
             </div>
         </div>
 
@@ -362,7 +362,7 @@
             </div>
             <div class="instance-body">
                 <p>Phase 0: Foundation (standalone, deps cleaned). Phase 1: 10 core engines (optimizer, graph, planner, skill tree, NSGA-II, symbolic, dialectics, strategy AI, TF-IDF, ingest). Phase 2: Intelligence (multi-objective, engine bus, learner, semiotic, goals, signals, analytics). Phase 3: Control (orchestrator, guidance, tensor nav, grand strategy, shell, onboarding, export, config). Phase 4: Polish (tests, wiring review, bug fixes). Phase 5: SaaS (39 engines across 5 sprints). Phase 6: Consumer surface (gateway, Claude Code plugin). Plus premium (coaching, templates, wearable, team) and infrastructure (sync, scheduler).</p>
-                <p>Each engine: dataclass models + SQLite WAL + event-sourced spine. One engine at a time. Wire before building the next. The Gemini-era PLATO tried to build 48 agents at once and collapsed. This one built 86 and they all work.</p>
+                <p>Each engine: dataclass models + SQLite WAL + event-sourced spine. Core engines were built individually and wired before the next; SaaS sprints built in batches of 5-14 following the established pattern. The Gemini-era PLATO tried to build 48 agents at once and collapsed. This one built 86 and they all work.</p>
             </div>
         </div>
 
@@ -393,7 +393,7 @@
         </div>
 
         <footer>
-            [DEVLOG] | Build one thing | Wire it | Test it | Build the next | 86 and counting
+            [DEVLOG] | Build one thing | Wire it | Test it | Build the next | 87 and counting
         </footer>
     </div>
 </body>
