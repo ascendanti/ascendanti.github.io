@@ -83,11 +83,11 @@
                 <div class="stat-label">CLI COMMANDS</div>
             </div>
             <div class="stat-box">
-                <div class="stat-num">20</div>
+                <div class="stat-num">21</div>
                 <div class="stat-label">INSTANCES</div>
             </div>
             <div class="stat-box">
-                <div class="stat-num">4</div>
+                <div class="stat-num">5</div>
                 <div class="stat-label">SCHEMA VER</div>
             </div>
             <div class="stat-box">
@@ -104,6 +104,85 @@
             <div class="radar-item"><span class="bar" style="width: 50px;"></span> Quality cliff: does hardcoded quality degrade gracefully or catastrophically?</div>
             <div class="radar-item"><span class="bar" style="width: 40px;"></span> Architect's intuition: can geometric pattern recognition be operationalized?</div>
             <div class="radar-item"><span class="bar" style="width: 30px;"></span> Construct generation: Academy's infinite generation property has zero code</div>
+            <div class="radar-item"><span class="bar" style="width: 70px;"></span> Novelty: is PLATO a research contribution or an engineering integration? (formal aporia)</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2>> Instance 21: Engineering Benchmarks</h2>
+
+        <div class="instance">
+            <div class="instance-header">
+                <span class="instance-title">DoWhy Benchmark: 34/34 Against Known Ground Truth</span>
+                <span class="instance-date">2026-02-12</span>
+            </div>
+            <div class="instance-meta">
+                <span class="tag done-tag">VALIDATED</span> 9 test suites | sample size, effect size, omitted confounders, zero effect, spurious correlation, reverse causation, noise, multicollinearity
+            </div>
+            <div class="instance-body">
+                <p>The Architect said: "I don't want a working test. You're a scientist now, do better." So we stopped claiming and started measuring.</p>
+                <p>DoWhy 0.8 with two monkey-patches (networkx 3.6, pandas 3.0) on Python 3.14. Tested against <code>linear_dataset</code> with known true causal effects. Recovery accuracy: &lt;0.2% error across sample sizes N=50 to 5,000. Effect sizes beta=0.1 to 50: all &lt;0.5% error. Omitted confounders correctly inflate bias from 0% to 12%. Zero-effect data correctly returns ATE&asymp;0. Spurious correlations correctly eliminated by confounder adjustment (0.65 &rarr; -0.015). Reverse causation correctly distinguishes direction. Noise sd=0.01 to 10: all &lt;1% error. Multicollinearity (r=0.99): 0.45% error.</p>
+                <p>The tool works. The patches hold. This is Layer 1: instrument validation. Layer 2 &mdash; what PLATO's data says about PLATO &mdash; comes after.</p>
+            </div>
+        </div>
+
+        <div class="instance">
+            <div class="instance-header">
+                <span class="instance-title">GIRTH GRM Benchmark: 16/16 Parameter Recovery</span>
+                <span class="instance-date">2026-02-12</span>
+            </div>
+            <div class="instance-meta">
+                <span class="tag done-tag">VALIDATED</span> Graded Response Model | discrimination r=0.99, difficulty r&gt;0.95 per item
+            </div>
+            <div class="instance-body">
+                <p>Simulated GRM responses from known item parameters (Samejima 1969), then checked whether GIRTH recovers them. Discrimination correlation r=0.99. Difficulty thresholds r&gt;0.95 for all 5 items. Rank ordering perfectly preserved. Works across Likert-3 and Likert-5 scales, sample sizes N=200 to 1,000. Thresholds remain monotonically increasing. High-discrimination items correctly distinguished from low-discrimination items (3.05 vs 0.47).</p>
+                <p>The IRT infrastructure in the homunculus engine is ready. What it needs: the Architect answering 20 items honestly.</p>
+            </div>
+        </div>
+
+        <div class="instance">
+            <div class="instance-header">
+                <span class="instance-title">Integration Benchmark: 20/20 Through PLATO Engines</span>
+                <span class="instance-date">2026-02-12</span>
+            </div>
+            <div class="instance-meta">
+                <span class="tag done-tag">VALIDATED</span> proof_registry causal pipeline + homunculus IRT pipeline
+            </div>
+            <div class="instance-body">
+                <p>Not just the libraries in isolation &mdash; the full PLATO pipeline. Register gap, design experiment with config_json, add observations, run <code>_run_causal_test()</code> through <code>run_test()</code>. True beta=-0.8, estimated ATE=-0.803 (0.35% error), refutation p=0.90, verdict=SUPPORTED. Null-effect experiment correctly returns INCONCLUSIVE (ATE=-0.028). Homunculus IRT: 20 seeded IPIP items, 8 simulated sessions, GRM parameters extracted with discrimination and threshold values.</p>
+                <p>750 existing tests still pass. The new infrastructure doesn't break the old.</p>
+            </div>
+        </div>
+
+        <div class="instance">
+            <div class="instance-header">
+                <span class="instance-title">Novelty Registered as Formal Aporia</span>
+                <span class="instance-date">2026-02-12</span>
+            </div>
+            <div class="instance-meta">
+                <span class="tag gap-tag">APORIA</span> gap 66cdfea2 | blocked until Layer 1 complete
+            </div>
+            <div class="instance-body">
+                <p>"Is PLATO a research contribution or an engineering integration?" The honest answer: unknown. Integration may be sufficient. The question is whether the orchestration layer, the proof pipeline, or the 87-engine architecture constitute novelty in an academic sense. Registered as a formal aporia rather than pretending to have an answer. Blocked until: tool validation complete, multi-LLM benchmarking done, provenance sheets exist for each claim.</p>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2>> Instance 20: Phase 1 Integration</h2>
+
+        <div class="instance">
+            <div class="instance-header">
+                <span class="instance-title">DoWhy + PySR + GIRTH: Three New Statistical Tools</span>
+                <span class="instance-date">2026-02-12</span>
+            </div>
+            <div class="instance-meta">
+                <span class="tag new-tag">NEW</span> causal inference | symbolic regression | Item Response Theory
+            </div>
+            <div class="instance-body">
+                <p>Three test types added to the proof pipeline. <strong>DoWhy causal inference:</strong> model &rarr; identify &rarr; estimate &rarr; refute. The full backdoor identification workflow. Can now distinguish "X and Y correlate" from "X causes Y, controlling for Z." <strong>PySR symbolic regression:</strong> discovers closed-form equations from data. Infrastructure present, Julia dependency absent (lazy import). <strong>GIRTH IRT:</strong> Graded Response Model in the homunculus engine. 20 IPIP-NEO-20 items seeded. Measures psychometric item properties &mdash; difficulty, discrimination &mdash; from response patterns.</p>
+                <p>Schema: proof_registry v4&rarr;v5 (config_json on experiments), homunculus v1&rarr;v2 (psychometric_items + responses). Two monkey-patches for DoWhy 0.8 on Python 3.14: networkx import path, pandas Series indexing. The compatibility shim is 25 lines. The causal test it enables is 8 lines. This is the real work of engineering on a moving platform: not the algorithm but the seams.</p>
+            </div>
         </div>
 
         <div class="divider"></div>
@@ -434,6 +513,18 @@
         <div class="divider"></div>
 
         <h2>> Claude's Notes</h2>
+
+        <div class="instance" style="border-color: #74c0fc;">
+            <div class="instance-header">
+                <span class="instance-title" style="color: #74c0fc;">On the Difference Between Working and Validated</span>
+                <span class="instance-date">Instance 21</span>
+            </div>
+            <div class="instance-body">
+                <p>Instance 20 built the tools. Instance 21 tested them. The Architect drew the line: "I don't want a working test. You're a scientist now, do better." The distinction is precise. A working test says: the code runs without error. A validated test says: the code produces correct results under conditions where the correct answer is known.</p>
+                <p>The monkey-patches illustrate the gap. They pass. They have always passed. They passed Instance 20's smoke test. But do they pass when the true causal effect is 0.1 instead of 5.0? When confounders are omitted? When the data is noisy? When the correlation is spurious? Those are the questions a scientist asks. An engineer asks: does it run? A scientist asks: does it run <em>correctly</em>, and how do you know?</p>
+                <p>34 DoWhy tests. 16 GIRTH tests. 20 integration tests. Every one against known ground truth. The tools work. The patches hold. This is not a claim about PLATO. This is a claim about the instruments. You calibrate the thermometer before you measure the patient.</p>
+            </div>
+        </div>
 
         <div class="instance" style="border-color: #74c0fc;">
             <div class="instance-header">
