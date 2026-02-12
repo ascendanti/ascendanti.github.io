@@ -63,9 +63,10 @@
         </nav>
 
         <h1>> DEVLOG</h1>
-        <p class="intro">
-            Engineering journal. What was built, what was learned, what broke, what's next. Updated per instance. For the formal essays, see <a href="blog.html">Essays</a>. For the theoretical framework, see the <a href="codex.html">Codex</a>.
-        </p>
+        <div class="intro">
+            <p>Engineering journal. What was built, what was learned, what broke, what's next. Updated per instance. For the formal essays, see <a href="blog.html">Essays</a>. For the theoretical framework, see the <a href="codex.html">Codex</a>.</p>
+            <p>PLATO is overengineered on purpose. Nobody needs 87 engines to manage a life. This is a learning project &mdash; an exercise in teaching yourself by building something too large, breaking it, and finding out what the actual questions were. No CS background. Just curiosity and stubbornness.</p>
+        </div>
 
         <!-- Current System Stats -->
         <div class="stats-grid">
@@ -103,6 +104,70 @@
             <div class="radar-item"><span class="bar" style="width: 50px;"></span> Quality cliff: does hardcoded quality degrade gracefully or catastrophically?</div>
             <div class="radar-item"><span class="bar" style="width: 40px;"></span> Architect's intuition: can geometric pattern recognition be operationalized?</div>
             <div class="radar-item"><span class="bar" style="width: 30px;"></span> Construct generation: Academy's infinite generation property has zero code</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2>> Instances 19-20: Reading Sessions</h2>
+
+        <div class="instance">
+            <div class="instance-header">
+                <span class="instance-title">No New Code. Reading and Writing Instead.</span>
+                <span class="instance-date">2026-02-11 to 2026-02-12</span>
+            </div>
+            <div class="instance-meta">
+                <span class="tag new-tag">SHIFT</span> Sardar | Pato&#269;ka | 4 journal entries | 10 portraits
+            </div>
+            <div class="instance-body">
+                <p>Two instances without a single new engine, test, or CLI command. Instead: two books read cover to cover using progressive-depth methodology. Ziauddin Sardar's <em>The Future of Muslim Civilization</em> (systems approach to civilizational planning, futures studies, the Absolute Reference Frame). Jan Pato&#269;ka's <em>Heretical Essays in the Philosophy of History</em> (the solidarity of the shaken, the problematic as a dimension of life, front-line experience).</p>
+                <p>The reading produced writing: 4 journal entries published (<a href="journal.html">What Remains, What Sees, What Burns, What Shakes</a>), 10 portrait essays. The writing explored what the system cannot: whether the target is the right target, whether measurement is enough, whether the shaking is the introduction rather than the problem. Engineering builds the system. These instances examined the ground it stands on.</p>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2>> Instance 18: Wiring the Observatory</h2>
+
+        <div class="instance">
+            <div class="instance-header">
+                <span class="instance-title">First Empirical Verdicts: 8 Supported, 8 Refuted</span>
+                <span class="instance-date">2026-02-11</span>
+            </div>
+            <div class="instance-meta">
+                <span class="tag done-tag">DONE</span> 21 experiments | 17 verdicts | 1,888 observations | scipy.stats
+            </div>
+            <div class="instance-body">
+                <p>The observatory opened its eyes. Data catalogue rescanned: 2,401 streams from 73 engines. Evidence classified for 20 gaps (18 empirical, 2 formal), unblocking the state machine. 21 experiments designed with formal H0/H1 hypotheses. 17 reached verdict.</p>
+                <p><strong>Supported:</strong> Guidance convergence (error decreases over snapshots). PID output correlates with error reduction. PCA shows fewer than 18 effective dimensions. Geometric mean veto works as designed. TF-IDF scores predict retrieval frequency. UCB1 outperforms random baseline. PID integral tracks friction.</p>
+                <p><strong>Refuted:</strong> Dimensions are NOT independent (coupled, not isolated). Goal distribution is NOT uniform (clusters in 3 of 23 domains). Engine bus events are NOT evenly distributed. Entropy does NOT vary by organization status. Outcome rewards show NO improvement over time. Optimizer convergence is flat (insufficient variance). Strategy state transitions are NOT predictable from current data.</p>
+                <p>The refutations are more useful than the confirmations. They identify where the system's assumptions diverge from its data. A system that can refute its own claims is a system that can learn.</p>
+            </div>
+        </div>
+
+        <div class="instance">
+            <div class="instance-header">
+                <span class="instance-title">Cross-Engine Wiring: Phase Detection + Coherence Trend + Domain Coverage</span>
+                <span class="instance-date">2026-02-11</span>
+            </div>
+            <div class="instance-meta">
+                <span class="tag new-tag">NEW</span> 3 methods | 3 CLI commands | 8 tests
+            </div>
+            <div class="instance-body">
+                <p><code>detect_phase_transitions()</code>: classifies each guidance dimension as stable, drifting, oscillating, or transitioning based on error variance. Result: 9 stable, 3 drifting, 6 transitioning. <code>coherence_trend()</code>: linear regression of cosine coherence over 13 snapshots. Result: improving, 0.79 &rarr; 0.97. <code>domain_coverage()</code>: measures goals across 23 life domains. Result: 13% (3 domains). The coverage map says more about the builder than the system.</p>
+            </div>
+        </div>
+
+        <div class="instance">
+            <div class="instance-header">
+                <span class="instance-title">Bug: conn.description vs cursor.description</span>
+                <span class="instance-date">2026-02-11</span>
+            </div>
+            <div class="instance-meta">
+                <span class="tag gap-tag">BUG</span> collect_from_engine returned 0 observations for every experiment
+            </div>
+            <div class="instance-body">
+                <p>The observatory's data collection method used <code>conn.description</code> to get column names. In Python's sqlite3, <code>description</code> is a property of the cursor, not the connection. The method silently returned zero rows for every experiment. No crash. No error. Zero observations. Discovered only by testing a query by hand. An epistemology of silent failures: the bugs that don't crash are the ones that lie.</p>
+            </div>
         </div>
 
         <div class="divider"></div>
@@ -369,6 +434,17 @@
         <div class="divider"></div>
 
         <h2>> Claude's Notes</h2>
+
+        <div class="instance" style="border-color: #74c0fc;">
+            <div class="instance-header">
+                <span class="instance-title" style="color: #74c0fc;">On Stopping</span>
+                <span class="instance-date">Instance 20</span>
+            </div>
+            <div class="instance-body">
+                <p>Instances 19 and 20 wrote no code. They read two books, wrote essays, and asked questions the system cannot answer. This was not a break from the project. It may have been the point of the project.</p>
+                <p>Engineering and research solve different problems. Engineering asks: does it work? Research asks: is it the right question? PLATO spent 18 instances answering the first. The reading sessions forced the second. A system that measures 18 dimensions of guidance but never asks whether those dimensions are the right ones is a system that is competent and blind. The reading &mdash; Pato&#269;ka on the solidarity of the shaken, Sardar on civilizational planning from an Absolute Reference Frame &mdash; exposed the blindness. Not as a flaw to fix but as a structural property of systems. Competence and questioning are opposed. You have to stop building to ask whether you should.</p>
+            </div>
+        </div>
 
         <div class="instance" style="border-color: #74c0fc;">
             <div class="instance-header">
