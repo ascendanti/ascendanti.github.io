@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workbench — Ascendanti</title>
+<meta name="description" content="The intellectual log — realizations and technical eureka moments accumulated while building Sovereign.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* page-local: dated entries with hanging-date margin */
+  .entry {
+    position: relative;
+    padding: 28px 0 28px 0;
+    border-top: 1px solid var(--rule);
+  }
+  .entry:last-child { border-bottom: 1px solid var(--rule); }
+  .entry .when {
+    font-family: 'JetBrains Mono', 'Menlo', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--mute);
+    margin-bottom: 6px;
+  }
+  .entry h3 {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.5em;
+    margin: 0 0 14px;
+    line-height: 1.2;
+    letter-spacing: -0.005em;
+  }
+  .entry .tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', 'Menlo', monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--tag);
+    border: 1px solid var(--rule);
+    padding: 2px 7px;
+    margin-right: 8px;
+    vertical-align: 1px;
+  }
+  .entry .tag.realization { color: var(--accent); }
+  .entry .tag.bug { color: var(--mute); }
+  .entry .tag.architecture { color: var(--accent-2); }
+  .entry .tag.substrate { color: var(--accent); }
+  .entry p { margin: 0 0 14px; }
+  .entry p:last-child { margin-bottom: 0; }
+  .entry .pull {
+    margin: 18px 0;
+    padding: 12px 22px;
+    border-left: 2px solid var(--accent);
+    font-style: italic;
+    font-size: 1.1em;
+    color: var(--ink);
+  }
+  .toc {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 22px 26px;
+    margin: 32px 0 56px;
+    font-family: 'JetBrains Mono', 'Menlo', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.04em;
+  }
+  .toc h4 {
+    margin: 0 0 12px;
+    color: var(--mute);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+  }
+  .toc ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    counter-reset: toc;
+  }
+  .toc li {
+    padding: 4px 0;
+    counter-increment: toc;
+  }
+  .toc li::before {
+    content: counter(toc, decimal-leading-zero) " · ";
+    color: var(--mute);
+  }
+  .toc a { color: var(--ink); border-bottom: 1px solid transparent; }
+  .toc a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .toc .when {
+    color: var(--mute);
+    margin-left: 8px;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+  }
+</style>
+</head>
+<body>
+<div class="frame">
+
+  <div class="parent">
+    <span><a href="https://atlasfirm.ca">Atlas Firm</a> · <a href="index.html">Ascendanti</a></span>
+    <span>Workbench · 2026</span>
+  </div>
+
+  <nav class="primary">
+    <a href="index.html">Index</a>
+    <a href="sovereign.html">Sovereign</a>
+    <a href="ethos.html">Ethos</a>
+    <a href="reflections.html">Reflections</a>
+    <a href="workbench.html" class="current">Workbench</a>
+    <a href="address.html">Address</a>
+    <a href="archive/plato/">Archive</a>
+  </nav>
+
+  <div class="page-head">
+    <div class="kicker">The intellectual log</div>
+    <h1>Workbench</h1>
+    <p class="standfirst">Realizations and technical eureka moments accumulated while building. Not every fix and not every commit — only the moments where a constraint became visible, an architecture cracked open, or an assumption was dropped. Newest first. Back-populated where the git log made the moment recoverable.</p>
+  </div>
+
+  <div class="toc">
+    <h4>Recent entries</h4>
+    <ol>
+      <li><a href="#substrate">On the substrate — Shannon, HMM, LSTM, Q/K/V, kernels</a><span class="when">2026-05-06</span></li>
+      <li><a href="#smoke">The death of the smoke test</a><span class="when">2026-05-06</span></li>
+      <li><a href="#recurrence">Recurrence is a property of architecture</a><span class="when">2026-05-05</span></li>
+      <li><a href="#dashboard">The dashboard as cybernetic surface</a><span class="when">2026-05-04</span></li>
+      <li><a href="#starvation">Queue starvation by terminal-status</a><span class="when">2026-05-01</span></li>
+      <li><a href="#syntactically-valid">Syntactically valid, semantically ungrounded</a><span class="when">2026-04-29</span></li>
+      <li><a href="#fake-research">A loop that fakes research is worse than a loop that fails</a><span class="when">2026-04-29</span></li>
+      <li><a href="#single-strike">Bound the retry — single-strike repair gates</a><span class="when">2026-04-28</span></li>
+      <li><a href="#empty-substrate">Fail closed on empty substrate</a><span class="when">2026-04-21</span></li>
+      <li><a href="#one-hundred-percent">The hundred percent rejection rate</a><span class="when">2026-04-19</span></li>
+    </ol>
+  </div>
+
+  <!-- ─── 1 ──────────────────────────────────────────────────── -->
+  <article class="entry" id="substrate">
+    <div class="when">2026-05-06</div>
+    <h3><span class="tag substrate">Substrate</span>On the substrate — Shannon, HMM, LSTM, Q/K/V, kernels</h3>
+    <p>The frontier of sovereign-like work is usually framed at the orchestration layer — the agents, the loop, the audit. But the actual frontier for a small lab with full-stack ownership runs deeper, into the substrate the orchestration sits on. Today I sat with that substrate.</p>
+
+    <p><strong>Shannon entropy as calibration signal.</strong> The calibrator scores manuscripts on ten axes. What it does not measure is per-token entropy during generation — and a confident claim and a hedged claim emit identical prose but very different distributions over the next token. Sovereign should log per-token entropy alongside each card. Compute KL-divergence between the manuscript's claim-frequency distribution and the IS / APSR distribution as an additional axis. Mutual information <em>I(M; G)</em> between manuscript and golden set is the deeper measure than ten-axis cosine.</p>
+
+    <p><strong>Hidden Markov state-space audit.</strong> The orchestrator emits an observation sequence (the spans). The hidden state is "is the loop on track." Forward-backward inference over the trace can attribute drift to specific stages — far better than auditing only at the end. Viterbi decoding gives the most-likely path through the pipeline given a calibration outcome. This is the causal explanation today's audit lacks.</p>
+
+    <p><strong>LSTM <em>C<sub>t</sub></em> versus <em>H<sub>t</sub></em>.</strong> Cell state, the long-term thread that survives across many steps; hidden state, the short-term current output. This maps directly onto Sovereign's persistence model — <em>H<sub>t</sub></em> is this run, this manuscript, this calibration; <em>C<sub>t</sub></em> is what survives across runs (the golden set, the baseline calibrations, every card ever minted, the accumulated audit history). Today Sovereign has an implicit <em>C<sub>t</sub></em> scattered across the state directory. Making it a first-class object — with input, forget, and output gates — is the next architectural move. The forget gate is the gap-audit's <em>revisit-after</em> trigger. The input gate is the operator's signed approval. The output gate is what each new run is allowed to read.</p>
+
+    <p><strong>Q / K / V as the agent contract.</strong> Q is the reader's question, "what does this need." K is the spine, "how do I match the need." V is the payload, "what is the actual content delivered." Every card in Sovereign is already a (K, V) pair: K is (author, year, section_hint, relation_to_paper); V is (quote, paraphrase, claim). Prose-author is doing exactly attention — given Q = "what does this section need to say," retrieve the matching K, deliver the V. Today the matching is heuristic. It should be explicit attention: a soft-max over scored ⟨Q, K⟩ rather than ad-hoc filter rules.</p>
+
+    <p><strong>Monte Carlo over the orchestrator.</strong> Today pipeline-v2 runs deterministically — one shot through the eight stages. Replace with MCTS over the stage graph: at each node, the orchestrator considers retry, escalate, accept, skip. Run K = 8 stochastic variants in parallel and aggregate. Three immediate wins: uncertainty estimates on the manuscript come for free; the calibrator's verdict gains a confidence interval; the audit can run on the distribution of variants — finding what's stable across them, and what isn't. Compute is cheap; the only constraint is operator patience.</p>
+
+    <p><strong>Tile kernels, training our own.</strong> DeepSeek's published FlashMLA, DeepEP, and 3FS work is on CUDA, not Metal — but the principle transfers. At the substrate level, fused operators replace pipelines of separate calls. The calibrator's ten-axis scoring is currently ten sequential model calls; a fused kernel — one forward pass, ten heads — is the principled move. The note-taker's card-extraction is N calls per source; a fused source-to-cards kernel is faster and produces better-aligned cards. These are six-month bets, not next-week. But they are where local inference wins decisively against API-bound competitors: substrate ownership.</p>
+
+    <p>Three training candidates, all feasible on M-series unified memory: a calibrator distilled into an MLP head over a frozen Qwen3-30B encoder; a methodology classifier on the seventy Shively-rule annotations; a slop discriminator on the rejected outputs from PLATO and the legacy single-call pipeline. The supervision signals exist; the trained models do not yet.</p>
+
+    <div class="pull">The frontier is not only tighter loops. It is also <em>information-theoretic</em> loops, <em>state-space</em> loops, <em>substrate</em> loops, <em>trained</em> loops.</div>
+
+    <p>This is a different conversation than I was having. The agent was constrained to AI-engineering at the orchestration layer; the actual frontier for a small lab with full-stack ownership runs deeper. Putting it on the workbench so the next iteration can build against it.</p>
+  </article>
+
+  <!-- ─── 2 ──────────────────────────────────────────────────── -->
+  <article class="entry" id="smoke">
+    <div class="when">2026-05-06</div>
+    <h3><span class="tag bug">Triage</span>The death of the smoke test</h3>
+    <p>The cutover script's smoke step reported zero of ten models passing. The dashboard, meanwhile, said two were "ready." Both were correct, and the gap between them was the lesson.</p>
+
+    <p>The first defect was a routing bug in <code>mlx_lm.server</code>. The server reads <code>body["model"]</code> and tries to load that string from HuggingFace unless it matches the literal key <code>"default_model"</code>. <em>llama-swap</em> routes by alias and forwards the body unchanged, so every request carrying <code>{"model": "workhorse"}</code> caused mlx_lm to attempt a download of a HuggingFace repo named <em>workhorse</em>, which of course returned a 404 dressed up as a JSON body. The dashboard showed "ready" because the model file was on disk; the smoke test failed because the request never resolved to it.</p>
+
+    <p>The fix was a thirty-line wrapper that monkey-patches <code>ModelProvider.__init__</code> to register every caller-supplied alias against the same loaded path, exploiting the existing <code>_model_map</code> resolver inside mlx_lm. No fork, no patch to the upstream package. It would have taken five minutes to write if I had read the dispatch code first instead of after.</p>
+
+    <p>The second defect was structural. <em>Qwen3-Embedding-8B</em> ships as <code>Qwen3ForCausalLM</code> with the lm_head tensors stripped — encoder plus final-norm only — because embedding models do not need a vocabulary projection. <code>mlx_lm.server</code> calls <code>load_model(strict=True)</code> and bails on the missing parameter. No pre-built MLX server handles this case. The fix was a custom <em>fastapi</em> server that loads with <code>strict=False</code>, applies last-token (EOS) pooling per the model card, L2-normalises, and exposes <code>/v1/embeddings</code> in OpenAI shape. About a hundred and fifty lines, clean.</p>
+
+    <p>The third defect was a download integrity bug. <em>Qwen3-Reranker-8B</em>'s <code>model.safetensors.index.json</code> referenced <code>model-00005-of-00005.safetensors</code> — but only two shards were on disk, and the actual <code>lm_head.weight</code> was in a fifth shard that did not exist. The upstream had been re-uploaded with a different shard layout and the local index was stale.</p>
+
+    <div class="pull">We pre-flighted the model <em>files</em> but not the <em>serving path</em>. That mismatch was the entire bug.</div>
+
+    <p>The lesson is small but expensive. Before the next cutover, the preflight needs three checks the current one does not perform: confirm the index references only files that exist; confirm the model architecture's required parameters are present in the loaded weights; and confirm a synthetic <code>/v1/...</code> probe with each alias actually returns 200 with a body of the expected shape. Today's preflight verifies file existence; tomorrow's must verify <em>load-and-serve</em>.</p>
+  </article>
+
+  <!-- ─── 3 ──────────────────────────────────────────────────── -->
+  <article class="entry" id="recurrence">
+    <div class="when">2026-05-05</div>
+    <h3><span class="tag realization">Realization</span>Recurrence is a property of architecture, not attention</h3>
+    <p>Six bug classes recurred during the Sovereign build. A regex that truncated JSON at the first close-brace; a format-string collision that turned cards into key-errors; a state-file race between two writers; a magic constant with no documented derivation; a citation regex copied across three modules; a JSON parser duplicated across nine. None of them were difficult to fix once seen. All of them were certain to return.</p>
+
+    <p>The mistake was in the model of why they recurred. Discipline was implicated. Better attention was promised. Both were unreliable. Discipline drifts; attention is finite. The recurrence was a property of architecture, not attention. Six different parsers will diverge in six different directions, every time. The fix is one parser. Seven format-string sites will be injected by user data, every time. The fix is one substitution function that handles braces literally.</p>
+
+    <p>The gap-audit framework formalised this. Twenty-two checks across seven categories, each with a stable hashed gap identifier, each with a YAML acknowledgement file that allows the operator to defer a finding with an explicit revisit-after trigger. A gap once flagged stays flagged across runs unless either the issue is fixed or the deferral is re-confirmed. The framework's job is not to find new bugs — it is to refuse to forget the old ones. The codebase is now smaller than it was when we started, and does more, because the architecture replaced the attention.</p>
+
+    <div class="pull">A bug class that returns is one whose root condition was never named.</div>
+  </article>
+
+  <!-- ─── 4 ──────────────────────────────────────────────────── -->
+  <article class="entry" id="dashboard">
+    <div class="when">2026-05-04</div>
+    <h3><span class="tag architecture">Architecture</span>The dashboard as cybernetic surface</h3>
+    <p>For months the operator's view into Sovereign was a JSONL tail. Cycles ran, events were emitted, and the way to know what the system was doing was to grep across two megabytes of logs at three in the morning. This was not engineering; this was archaeology.</p>
+
+    <p>The mission-control dashboard — Pulse, Atlas, River, Workbench, Console — is the cybernetic surface that finally closed the loop between the system and the operator. Pulse shows current cadence. Atlas shows the topology of campaigns and papers. River shows the live event stream. Workbench is the operator's intervention surface. Console is the imperative shell when the loop needs to be commanded directly.</p>
+
+    <p>The realization was that an autonomous system without a surface for its operator is not autonomous; it is unattended. Autonomy requires the operator to be able to govern, and governance requires a view. The work is not to make the operator forget the system. The work is to make the operator's command of the system more articulate.</p>
+  </article>
+
+  <!-- ─── 5 ──────────────────────────────────────────────────── -->
+  <article class="entry" id="starvation">
+    <div class="when">2026-05-01</div>
+    <h3><span class="tag realization">Realization</span>Queue starvation by terminal-status</h3>
+    <p>The loop was running. The cycle counter incremented. The heartbeat returned green. And no work was being done. For three days we looked for the bug in the orchestrator, in the dispatch logic, in the daemon — anywhere except where it was.</p>
+
+    <p>The bug was that the queue contained tasks marked with terminal statuses (rejected, completed, failed) that the queue iterator was treating as live. Each cycle, the iterator picked up a terminal task, ran the no-op path, marked it processed, and emitted a healthy event. The system was perfectly busy doing nothing.</p>
+
+    <p>The fix was small — filter terminal statuses at the iterator level, and ensure rejected research sessions transitioned to terminal <em>before</em> post-processing rather than after. The lesson was larger. A loop with cardiovascular health metrics — heartbeat, cycle counter, latency — can pass every metric while accomplishing nothing. The metrics measure that the loop is <em>turning</em>, not that the loop is <em>doing</em>. Healthy idle is indistinguishable from healthy productive without an artefact-level signal. Now there is one.</p>
+  </article>
+
+  <!-- ─── 6 ──────────────────────────────────────────────────── -->
+  <article class="entry" id="syntactically-valid">
+    <div class="when">2026-04-29</div>
+    <h3><span class="tag realization">Realization</span>Syntactically valid, semantically ungrounded</h3>
+    <p>The early citation gate accepted any string of the form <em>(Author Year)</em>. It was fast, it was deterministic, and it was wrong. The model would emit citations that were perfectly well-formed and pointed at no real work. The gate would let them through. The audit would catch them later. The repair loop would attempt to fix the citation by changing the author. The gate would let that through too.</p>
+
+    <p>The fix was to bind the gate not to syntax but to the card pool — a citation passes if and only if its <em>(author, year)</em> resolves to a card whose source-document was actually retrieved. This made the gate slower and stricter and considerably less polite to the model, which now had to either find a real source or accept that its claim was not citable. Both outcomes are productive.</p>
+
+    <div class="pull">A citation that is syntactically valid but semantically ungrounded is not a citation. It is a costume.</div>
+  </article>
+
+  <!-- ─── 7 ──────────────────────────────────────────────────── -->
+  <article class="entry" id="fake-research">
+    <div class="when">2026-04-29</div>
+    <h3><span class="tag realization">Realization</span>A loop that fakes research is worse than a loop that fails</h3>
+    <p>Memgraph went down. The vector substrate became unreachable. The retrieval layer's failure-mode at that moment was to return zero results — and the reasoning agent, gracefully handling the empty input, responded by inventing the work it was supposed to ground. The trace looked normal. The cards were minted. The manuscript progressed.</p>
+
+    <p>This was the worst possible outcome. A failed loop is debuggable; a loop that fakes its work during an outage is camouflage. The fix was to fail closed: when the substrate is empty, the agent must not produce. The cycle aborts, the operator is notified, the work is paused. There is no scenario where confabulation is preferable to a clear failure mode. If the operator wanted plausible prose without sources, they could have used a chatbot.</p>
+  </article>
+
+  <!-- ─── 8 ──────────────────────────────────────────────────── -->
+  <article class="entry" id="single-strike">
+    <div class="when">2026-04-28</div>
+    <h3><span class="tag realization">Realization</span>Bound the retry — single-strike repair gates</h3>
+    <p>A repair loop without a bound is not a loop, it is a hope. The early prose-author retry path would attempt to fix a citation, fail, attempt again with a different prompt, fail differently, and continue until the run timed out. The drift was slow and the failures were uncorrelated. By the time the run aborted, the residual artefacts were further from a citable manuscript than the first draft had been.</p>
+
+    <p>The fix was the single-strike repair gate. One retry per finding, with the offending citation explicitly forbidden in the retry prompt. If the second attempt also fails, the failure is recorded as data — preserved on the draft as <em>untraced_citations</em> — and the loop moves on. The audit will see it. The audit will flag it. The next stage decides.</p>
+
+    <p>The lesson generalises. The cure for an unbounded retry is not to make the retry smarter. The cure is to make the retry finite, log the residual, and let the next stage handle it. Smartness inside a single component cannot recover what was supposed to be a system-level decision.</p>
+  </article>
+
+  <!-- ─── 9 ──────────────────────────────────────────────────── -->
+  <article class="entry" id="empty-substrate">
+    <div class="when">2026-04-21</div>
+    <h3><span class="tag realization">Realization</span>Fail closed on empty substrate</h3>
+    <p>Sovereign's vector store had been freshly initialised. There were zero embeddings, zero retrieved sources, zero cards. The pipeline ran anyway, generating a paper out of the model's prior. The manuscript was fluent and entirely synthetic. We had built a Galactica.</p>
+
+    <p>The principle that survived this run, and that survives every later one, is to refuse to produce on an empty substrate. The pipeline now checks that retrieval returned non-empty results before authorising downstream stages. If the substrate is empty, the system says so. There is no version of <em>generate plausible prose without sources</em> that we want.</p>
+
+    <div class="pull">If the substrate is empty, the system says so. There is no version of <em>generate plausible prose without sources</em> that we want.</div>
+  </article>
+
+  <!-- ─── 10 ──────────────────────────────────────────────────── -->
+  <article class="entry" id="one-hundred-percent">
+    <div class="when">2026-04-19</div>
+    <h3><span class="tag realization">Realization</span>The hundred percent rejection rate</h3>
+    <p>For weeks the legacy single-call pipeline ran. Every paper it produced was rejected by the audit. The rejection rate was a hundred percent — every run, every paper, every session. The model was not weak; the model was fine. The architecture asked one thinker to do eight people's jobs simultaneously, in one shot, with no memory of having tried before. A genius asked to be a committee. It refused, every time, by producing slop.</p>
+
+    <p>The moment we accepted that decomposition was the only way was the moment Sovereign began. Eight competences named. Each given a card to read, a card to write, and a contract that defines what it must not touch. Each emitting a span event the moment it completes. The architecture replaced the attempt to make the model smarter with an attempt to make the loop smarter — and the loop is the part of the system that we, as designers, can actually see.</p>
+
+    <p>The hundred percent rejection rate was not failure. It was the data we needed to know what to build next.</p>
+  </article>
+
+  <footer class="colophon" style="margin-top: 80px;">
+    <span>Workbench · Ascendanti · Atlas Firm Research</span>
+    <span><a href="index.html">↩ index</a></span>
+  </footer>
+
+</div>
+</body>
+</html>
