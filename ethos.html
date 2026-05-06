@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ethos — Ascendanti</title>
+<meta name="description" content="The six premises of Ascendanti — local-first, bounded, traceable, self-auditing, seamful, infinite.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="frame">
+
+  <div class="parent">
+    <span><a href="https://atlasfirm.ca">Atlas Firm</a> · <a href="index.html">Ascendanti</a></span>
+    <span>Ethos · 2026</span>
+  </div>
+
+  <nav class="primary">
+    <a href="index.html">Index</a>
+    <a href="sovereign.html">Sovereign</a>
+    <a href="ethos.html" class="current">Ethos</a>
+    <a href="reflections.html">Reflections</a>
+    <a href="address.html">Address</a>
+    <a href="archive/plato/">Archive</a>
+  </nav>
+
+  <div class="page-head">
+    <div class="kicker">The Six Premises</div>
+    <h1>Ethos</h1>
+    <p class="standfirst">Six tenets that shape every system the lab builds. They are not slogans. Each names a constraint that, if violated, returns the system to a state we have already learned does not work.</p>
+  </div>
+
+  <section>
+    <div class="section-head">
+      <span class="section-num">§ I</span>
+      <h2>Local-first</h2>
+    </div>
+    <p class="lede">Reasoning runs on hardware the operator owns. The cloud is for distribution, not cognition. A system whose intelligence depends on a remote endpoint is a system whose intelligence can be revoked, rate-limited, mispriced, or quietly altered between calls. None of those failure modes are recoverable inside a long-running loop. We build for the case where the laptop is the only thing the operator can trust.</p>
+    <p>The constraint is not anti-cloud. It is anti-dependence. Models, weights, embeddings, vector stores, traces — all of it lives on the operator's disk. The work product is the operator's. The work itself is observable. When the laptop closes, the system is gone; when it opens, the system returns exactly as it was. There is no other contract that survives a decade.</p>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-num">§ II</span>
+      <h2>Bounded</h2>
+    </div>
+    <p>Every agent has a declared scope. What it reads. What it writes. What it must not touch. Discretion lives in the model; authority lives in the contract. An agent that is not bounded is not an agent — it is a process whose responsibilities are guessed at by the operator and renegotiated each time it fails. That is a system that cannot be reasoned about.</p>
+    <p>Bounded does not mean small. It means <em>declared</em>. The note-taker may read sources, write cards, and emit a span. It may not edit the spec, modify the manuscript, or mutate the calibration. If it tries, the orchestrator stops it. The contract is enforced not by good intentions but by a typed boundary the agent cannot cross.</p>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-num">§ III</span>
+      <h2>Traceable</h2>
+    </div>
+    <p>Every output is a span event. A system that cannot show its work cannot be debugged, and a system that cannot be debugged cannot improve. Traceability is the difference between a loop that learns and a loop that hopes.</p>
+    <p>The trace is not a log. It is a structured record: stage name, milliseconds elapsed, contract status, decisions, signals, the typed inputs and outputs of every reasoning step. When a paper produced by Sovereign drifts, the operator does not have to read the paper to find out which stage drifted. They read the trace. The drift is named.</p>
+    <blockquote class="pull">
+      The trace is the paper's birth certificate.
+      <cite>— On the loop</cite>
+    </blockquote>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-num">§ IV</span>
+      <h2>Self-auditing</h2>
+    </div>
+    <p>Quality is measured against an external reference set, not declared by the model that produced it. A system that grades its own output without an anchor will produce confident grades for output that does not deserve them — every time, in every domain, on every benchmark we have ever inspected. The fix is not better grading prompts. The fix is an external reference.</p>
+    <p>Sovereign's calibrator scores against twenty-four hundred and one published papers from <em>International Studies Quarterly</em> and the <em>American Political Science Review</em>. Scoring is not a probability the model emits; it is a distance to the reference distribution. If the manuscript falls outside the distribution on an axis we care about, that is the audit's signal — not a number the model invented.</p>
+    <p>Self-auditing also means refusing to finish. The loop does not stop when the model says it is done. The loop stops when seventy methodology rules pass, eighty adversarial attacks fail to find purchase, and ten calibration axes clear their thresholds. Until then, the loop runs again.</p>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-num">§ V</span>
+      <h2>Seamful</h2>
+    </div>
+    <p>Friction at the right boundaries, not none. The fashionable view is that the best tool is invisible — that the goal of design is to make the seam between operator and machine disappear. We disagree. A seam that disappears is a seam that cannot be governed.</p>
+    <p>Sovereign is deliberately not a chatbot. There is no persona, no soothing front, no plausible illusion that the manuscript was written by a thinking interlocutor on the other side of the screen. The operator inscribes a paper specification, the system runs a structured procedure, and the operator reads the trace. The act of governing the system is felt, not hidden. The transition between biological cognition and machine cognition is announced.</p>
+    <p>The point is not friction for its own sake. The point is that the operator must remain acutely aware of which side of the seam they are on. A tool that asks to be forgotten is a tool that is no longer being commanded.</p>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-num">§ VI</span>
+      <h2>Infinite</h2>
+    </div>
+    <p>The work is never finished. Every run should be better than the last on axes we can name. There is no version of Sovereign that is "done"; there are only successive runs, each producing a trace, each producing a delta, each producing a new question the next run will try to answer.</p>
+    <p>This is not aspiration. It is operationally enforced. The calibrator records a baseline on first run; every subsequent run reports its delta. If three consecutive runs show no improvement, that is a signal — either the loop has plateaued and needs a new mechanism, or the axes themselves are wrong and need to be replaced. Both outcomes are productive. Both are visible because the loop is finite at every step but infinite in aggregate.</p>
+    <blockquote class="pull">
+      A finite game is played for the purpose of winning. An infinite game is played for the purpose of continuing the play.
+      <cite>— J. Carse, paraphrased</cite>
+    </blockquote>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-num">§ VII</span>
+      <h2>Coda</h2>
+    </div>
+    <p>None of these tenets are novel. Local-first is older than the cloud. Bounded contracts are older than software. Traceability is what every empirical science has always demanded of itself. Self-audit is what peer review was supposed to be. Seamful design is what cyberneticians argued for in the nineteen-sixties. Infinite games are what every craftsperson eventually accepts as the shape of their work.</p>
+    <p>What is novel is the insistence on holding all six at once, in a single system, without trading any of them away for convenience. Most autonomous systems we have inspected give up at least three. The lab's bet is that the next useful generation will be the one that gives up none.</p>
+  </section>
+
+  <footer class="colophon">
+    <span>Ethos · Ascendanti · Atlas Firm Research</span>
+    <span><a href="index.html">↩ index</a></span>
+  </footer>
+
+</div>
+</body>
+</html>

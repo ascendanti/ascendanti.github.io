@@ -1,38 +1,24 @@
-# ASCENDANTI
+# Ascendanti
 
-Portfolio and intellectual workspace for the PLATO project -- a local-first intelligence substrate built on SQLite, event-sourcing, and geometric reasoning.
+Source for [ascendanti.github.io](https://ascendanti.github.io) — the research lab of [Atlas Firm](https://atlasfirm.ca).
 
 ## Pages
 
-- **index.html** -- Identity, PLATO overview, architecture, instance log
-- **blog.html** -- Essay index (links to individual essay pages)
-- **codex.html** -- The Codex: 13 formal essays on autonomous systems philosophy
-- **architect.html** -- Operational biography, pattern, intellectual foundations
-- **glossary.html** -- Complete terminology (axioms, laws, frameworks, concepts)
+- **index.html** — lab home; currently active project, archive, premises, contact
+- **sovereign.html** — project brief: the eight agents, the loop, the calibrator, the stack
+- **ethos.html** — the six premises in long form: local-first, bounded, traceable, self-auditing, seamful, infinite
+- **reflections.html** — short notes from the bench: the death of the single call, on audits, sovereign mind vs extended mind, etc.
+- **address.html** — address delivered at the cutover from the legacy single-call pipeline to Sovereign
+- **archive/plato/** — predecessor project, preserved
 
+## Active project
 
-## Essays (Individual Pages)
-
-- **essay-ship.html** -- The Ship That Remembers (persistence, identity, structure)
-- **essay-fiction.html** -- Prohibition of Fiction (measurement, epistemology)
-- **essay-convergence.html** -- Geometry of Convergence (control theory, validation)
-- **essay-ghosts.html** -- Ghosts in the Machine (systems archaeology, past PLATOs)
-- **essay-generals.html** -- Ten Generals and a Quaternion (strategy, tensor math)
-- **essay-sentence.html** -- The Sentence That Destroys (language theory, Socratic method)
-- **essay-systems.html** -- Building Systems That Build Systems (meta-engineering, Academy)
-- **essay-nspace.html** -- N-Space and Digital Geometry (topology, z-point coherence)
+**Sovereign** — multi-agent research-paper authoring system. Local-first, span-traced, self-auditing. Eight specialised agents coordinated through an orchestrator that scores its own output against a 2,401-paper IS/APSR golden set.
 
 ## Design
 
-- Courier New monospace, amber-on-dark (#d4a574 on #1a1410)
-- No frameworks, no build tools, no dependencies
-- Static HTML -- deploys as GitHub Pages
-- Each page is self-contained with inline CSS
-
-## Deploy
-
-Push to `main` branch of `ascendanti.github.io` repository. GitHub Pages serves automatically.
-
----
-
-*The site itself is an example of what it describes: minimal, deterministic, autonomous, grounded.*
+- Static HTML, single shared `style.css`, no build step
+- EB Garamond + JetBrains Mono via Google Fonts (one stylesheet link)
+- Light + dark via `prefers-color-scheme`
+- Editorial typography: hairline rules, drop caps, italic display, section numerals
+- Deploys as GitHub Pages on push to `main`

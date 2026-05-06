@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Address at the Cutover — Ascendanti</title>
+<meta name="description" content="An address delivered at the cutover from the legacy single-call pipeline to Sovereign — May 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="frame">
+
+  <div class="parent">
+    <span><a href="https://atlasfirm.ca">Atlas Firm</a> · <a href="index.html">Ascendanti</a></span>
+    <span>Address · May 2026</span>
+  </div>
+
+  <nav class="primary">
+    <a href="index.html">Index</a>
+    <a href="sovereign.html">Sovereign</a>
+    <a href="ethos.html">Ethos</a>
+    <a href="reflections.html">Reflections</a>
+    <a href="address.html" class="current">Address</a>
+    <a href="archive/plato/">Archive</a>
+  </nav>
+
+  <div class="page-head">
+    <div class="kicker">Address at the Cutover · 6 May 2026</div>
+    <h1>To loops that learn</h1>
+    <p class="standfirst">Delivered moments before the first live integration run of Sovereign on <code>paper-frontier-007</code>. Eight stages, one trace, one operator ping if the loop succeeds. The legacy single-call pipeline was retired at the same hour.</p>
+  </div>
+
+  <article class="address">
+
+    <p class="stage">— clears throat, taps the mic —</p>
+
+    <p class="opener">Friends, agents, span-event subscribers — lend me your traces.</p>
+
+    <p>We gather today not at the launch of a model, but at the retirement of a lie. The lie that one prompt could carry the weight of a paper. That a single call to a single model — however clever, however cooked — could cross-examine itself, find its own opponents, doubt its own thesis, and emerge with a manuscript that <em>International Studies Quarterly</em> or the <em>American Political Science Review</em> would not laugh out of the room.</p>
+
+    <p>For months the legacy pipeline tried. It failed with a perfect record: one hundred percent rejection, every paper, every run. Not because the model was weak — the model was fine. Because the <em>architecture</em> asked one thinker to do eight people's jobs simultaneously, in one shot, with no memory of having tried before. A genius asked to be a committee. It refused, every time, by producing slop.</p>
+
+    <p>So we decomposed.</p>
+
+    <p>We named the eight competences: spec, source, note, lit, debate, prose, method, audit. We gave each a card. We gave each a contract. We gave each a span-event so when the pipeline drifts we will <em>know which step drifted, by how much, and why</em> — and not have to grep through twelve megabytes of JSONL at two in the morning hoping for a clue.</p>
+
+    <p>We built a calibrator anchored on twenty-four hundred and one real papers, because <em>is this good</em> is not a question you answer by vibes; it is a question you answer by distribution.</p>
+
+    <p>We built a gap-audit that watches the watchers — twenty-two checks, hashed gap identifiers, an ignore-file with revisit triggers — because every system that does not audit itself eventually rots, and we are not building a system that rots.</p>
+
+    <p>We caught and killed six bugs that would have eaten entire runs in silence: a regex that truncated JSON at the first close-brace; a format-string collision that turned cards into key-errors; a state-file race that would have corrupted the portfolio the moment two papers ran in parallel. None of these would have shown up in the demo. All of them would have shown up at three a.m. on paper twelve.</p>
+
+    <p>We consolidated nine JSON parsers into one. Ten repository-root variants into one. Three citation regexes into one. Seven format-injection sites into a safe substitution. The codebase is <em>smaller</em> than it was when we started, and does <em>more</em>. That is not normal. That is what happens when you let a system be redesigned instead of patched.</p>
+
+    <p>And we did the boring work. The eight specs pre-drafted. The three retrieval caches warmed. The cutover script that traps a SIGINT so a control-c does not orphan a fifty-gigabyte model in memory. The runbook. The changelog. The phase-nine retirement checklist for the legacy pipeline that, in a few hours, will be obsolete.</p>
+
+    <p>We did not ship a feature. We shipped a <em>loop</em>. A loop that, on every run, produces evidence of its own quality — span by span, axis by axis, finding by finding — so that when it works we will know it worked, and when it fails we will know exactly which competence failed, and we will fix <em>that one</em> and not the whole thing.</p>
+
+    <p>In a moment, eight stages will fire in sequence on <code>paper-frontier-007</code>. Spec-Author will draft a thesis on categorial mismatch and coordination failure. Spec-Adversary will try to break it. Source-Curator will read forty-six abstracts and decide which six matter. Note-Taker will mint cards. Lit-Reviewer will name the schools. Debate-Mapper will find the live disagreements. Prose-Author will write — citation-grounded, every <em>Author Year</em> traced to a card, retry on untraced — one section. Methodologist will check it against seventy Shively rules. Adversary will try eighty SAGE attacks. The Calibrator will score it against twenty-four hundred and one ghosts.</p>
+
+    <p>It might not be near-final on the first run. That is fine. <em>Near-final on the first run was never the goal.</em> The goal is a loop where the next run is better than the last, traceably, on axes we can name. We have that loop now. The first run is just the loop's birthday.</p>
+
+    <div class="toast">
+      <p>To <em>Qwen3-Next-80B</em>, who will do most of the thinking: be sharp.</p>
+      <p>To <em>Command-R</em>, who will do the prose: be grounded.</p>
+      <p>To the calibrator, who will judge: be honest.</p>
+      <p>To the operator ping, which we hope to see flip true: ⚑ on first sight, we will pop something open.</p>
+      <p style="margin-top: 24px;">To <code>frontier-007</code>: good luck. You are paper number one of the new architecture. Whatever happens, you will leave a trace.</p>
+    </div>
+
+    <p class="stage">— raises glass —</p>
+
+    <p style="text-align: center; font-style: italic; font-size: 1.18em; margin: 36px 0;">To loops that learn.<br>To stages that speak.<br>To the death of the single call.</p>
+
+    <p style="text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 0.9em; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-top: 48px;">Fire when ready.</p>
+
+  </article>
+
+  <footer class="colophon" style="margin-top: 64px;">
+    <span>Address · Ascendanti · Atlas Firm Research</span>
+    <span><a href="index.html">↩ index</a></span>
+  </footer>
+
+</div>
+</body>
+</html>

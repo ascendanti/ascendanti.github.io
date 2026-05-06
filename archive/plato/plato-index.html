@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLATO - Local-First Intelligence Substrate</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #1a1410;
+            color: #e8dcc8;
+            line-height: 1.4;
+            overflow-x: hidden;
+            text-shadow: 0 0 10px rgba(212, 165, 116, 0.15);
+        }
+
+        a {
+            color: #d4a574;
+            text-decoration: none;
+            transition: all 0.2s;
+            border-bottom: 1px dotted #d4a574;
+        }
+
+        a:hover {
+            color: #f0c878;
+            border-bottom: 1px solid #f0c878;
+            text-shadow: 0 0 10px rgba(240, 200, 120, 0.4);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            border: 2px solid #d4a574;
+            padding: 30px;
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, rgba(212,165,116,0.08) 0%, rgba(240,200,120,0.04) 100%);
+            box-shadow: inset 0 0 20px rgba(212, 165, 116, 0.08);
+        }
+
+        .ascii-title {
+            font-size: 11px;
+            line-height: 1;
+            margin-bottom: 20px;
+            color: #d4a574;
+            white-space: pre;
+            overflow-x: auto;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            color: #f0c878;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            color: #d4a574;
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+
+        section {
+            margin-bottom: 50px;
+            border-left: 3px solid #d4a574;
+            padding-left: 20px;
+        }
+
+        .divider {
+            border: 1px dotted #d4a574;
+            margin: 30px 0;
+            opacity: 0.5;
+        }
+
+        .status-line {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            font-size: 0.9em;
+        }
+
+        .status-label {
+            color: #d4a574;
+            width: 30%;
+        }
+
+        .status-value {
+            color: #f0c878;
+            font-weight: bold;
+        }
+
+        .box {
+            border: 1px solid #d4a574;
+            padding: 15px;
+            margin-bottom: 15px;
+            background: rgba(0, 255, 0, 0.02);
+        }
+
+        .code-block {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid #d4a574;
+            padding: 15px;
+            overflow-x: auto;
+            margin: 10px 0;
+            font-size: 0.85em;
+            line-height: 1.5;
+            white-space: pre-wrap;
+        }
+
+        .project {
+            margin-bottom: 25px;
+            padding: 15px;
+            border: 1px solid #f0c878;
+            background: rgba(0, 255, 136, 0.03);
+        }
+
+        .project-title {
+            color: #f0c878;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+
+        .project-desc {
+            color: #d4a574;
+            font-size: 0.9em;
+            margin-bottom: 8px;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .tag {
+            background: rgba(0, 255, 0, 0.1);
+            border: 1px solid #d4a574;
+            padding: 3px 8px;
+            font-size: 0.8em;
+            color: #d4a574;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .stat-box {
+            border: 1px solid #d4a574;
+            padding: 15px;
+            text-align: center;
+            background: rgba(0, 255, 0, 0.02);
+        }
+
+        .stat-number {
+            font-size: 1.8em;
+            color: #f0c878;
+            font-weight: bold;
+        }
+
+        .stat-label {
+            font-size: 0.8em;
+            color: #d4a574;
+            margin-top: 5px;
+        }
+
+        footer {
+            border-top: 2px dashed #d4a574;
+            padding-top: 20px;
+            margin-top: 50px;
+            text-align: center;
+            color: #d4a574;
+            font-size: 0.85em;
+            opacity: 0.7;
+        }
+
+        .link-list {
+            margin: 15px 0;
+        }
+
+        .link-list a {
+            display: block;
+            margin: 8px 0;
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { text-shadow: 0 0 10px rgba(0, 255, 0, 0.3); }
+            50% { text-shadow: 0 0 20px rgba(0, 255, 0, 0.8); }
+        }
+
+        details {
+            margin-bottom: 50px;
+            border-left: 3px solid #d4a574;
+            padding-left: 20px;
+        }
+
+        details > summary {
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            align-items: baseline;
+            gap: 15px;
+        }
+
+        details > summary::-webkit-details-marker { display: none; }
+        details > summary::marker { display: none; content: ''; }
+
+        details > summary h2 {
+            font-size: 1.5em;
+            margin-bottom: 0;
+            color: #f0c878;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
+        details > summary .one-liner {
+            color: #d4a574;
+            font-size: 0.85em;
+            opacity: 0.7;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        details[open] > summary .one-liner {
+            display: none;
+        }
+
+        details[open] > summary {
+            margin-bottom: 15px;
+        }
+
+        details > summary h2::before {
+            content: '+ ';
+            color: #d4a574;
+            font-weight: normal;
+        }
+
+        details[open] > summary h2::before {
+            content: '- ';
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 20px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav style="margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px dashed #d4a574;">
+            <a href="index.html" style="margin-right: 20px; color: #f0c878;">home</a>
+            <a href="blog.html" style="margin-right: 20px;">essays</a>
+            <a href="journal.html" style="margin-right: 20px;">journal</a>
+            <a href="codex.html" style="margin-right: 20px;">codex</a>
+            <a href="architect.html" style="margin-right: 20px;">architect</a>
+            <a href="glossary.html" style="margin-right: 20px;">glossary</a>
+            <a href="devlog.html" style="margin-right: 20px;">devlog</a>
+            <a href="https://github.com/ascendanti/PLATO">github</a>
+        </nav>
+
+        <header>
+            <div class="ascii-title">
+ █████╗ ████████╗██╗      █████╗ ███████╗
+██╔══██╗╚══██╔══╝██║     ██╔══██╗██╔════╝
+███████║   ██║   ██║     ███████║███████╗
+██╔══██║   ██║   ██║     ██╔══██║╚════██║
+██║  ██║   ██║   ███████╗██║  ██║███████║
+╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝╚══════╝
+       D Y N A M I C S   v0.2.0
+            </div>
+            <p class="subtitle">// Local-first intelligence substrate. 87 engines. Zero cloud.</p>
+            <p class="subtitle" style="margin-top: 8px; opacity: 0.6;">// A learning project in cybernetics, control theory, and asking the wrong questions</p>
+        </header>
+
+        <details open>
+            <summary><h2>PLATO</h2><span class="one-liner">Local-first intelligence substrate -- 87 engines, SQLite, zero cloud</span></summary>
+            <p style="margin-bottom: 15px;">
+                A local-first intelligence substrate. 87 engines running on SQLite, event-sourced, deterministic, fully observable. No cloud. No API calls home. The system observes, measures, compresses, and learns. It tracks coherence relative to a goal using bounded memory -- fixed-capacity state, goal-conditioned updates, controlled forgetting. The first dataset is a human life because that's the hardest problem: fuzzy causality, incomplete information, non-convex optimization landscapes, and a pilot who sometimes stops logging for three days because they got the flu. If it works here, it works anywhere.
+            </p>
+
+            <div class="box">
+                <div class="status-line">
+                    <span class="status-label">status:</span>
+                    <span class="status-value pulse">ACTIVE | Instance 20 Complete</span>
+                </div>
+                <div class="status-line">
+                    <span class="status-label">engines:</span>
+                    <span class="status-value">87 (all operational)</span>
+                </div>
+                <div class="status-line">
+                    <span class="status-label">test_coverage:</span>
+                    <span class="status-value">750 tests passing</span>
+                </div>
+                <div class="status-line">
+                    <span class="status-label">architecture:</span>
+                    <span class="status-value">5-tier event-sourced spine, SQLite WAL, zero cloud</span>
+                </div>
+                <div class="status-line">
+                    <span class="status-label">instances_completed:</span>
+                    <span class="status-value">20 (<a href="devlog.html" style="border-bottom: 1px dotted #f0c878;">full log</a>)</span>
+                </div>
+            </div>
+
+            <h3 style="color: #f0c878; margin-top: 25px; margin-bottom: 15px;">Current State</h3>
+            <p style="margin-bottom: 15px; color: #d4a574; font-size: 0.95em;">
+                The measurement infrastructure works. The proof system tested 17 of its own hypotheses: 8 supported, 8 refuted, 1 inconclusive. The refutations are the interesting part &mdash; dimensions assumed independent are coupled, outcome rewards show no improvement over time, strategy states are not predictable from current data. No claims on this site exceed what the code can demonstrate. For the full engineering log, see the <a href="devlog.html">devlog</a>.
+            </p>
+
+            <h3 style="color: #f0c878; margin-top: 25px; margin-bottom: 15px;">What PLATO Actually Is</h3>
+            <div class="code-block">
+A bounded reasoning substrate built on three invariants:
+
+1. THE SPINE (Flight Recorder)
+   COMMAND -> EVENT -> PROJECTION
+   Traceability, not determinism. The spine cannot prove WHY
+   you burned out. It can prove that 400 "High Effort" events
+   were logged with zero "Recovery" events. Accountability,
+   not causality.
+
+2. THE OFFICES (Bounded Agency)
+   13 offices with explicit read/write scopes. Each office has
+   a universal probe: READ -> NORMALIZE -> ASSESS (range check)
+   -> WRITE & EMIT. No discretionary decisions in the triggered
+   layer. The orchestrator reads the plan, executes the next task,
+   logs, updates. It does not think.
+
+3. THE REGISTRIES (Self-Describing)
+   IO Registry:     27 wireable sources and sinks
+   Office Registry: 13 offices with scope declarations
+   Range Registry:  Tunable thresholds per IO, managed only
+                    by the Range Governance Office
+   All SQLite-backed. All auditable.
+
+EPISTEMIC CONFIDENCE:
+  Every claim carries a 4-vector: (alpha, beta, gamma, delta)
+    alpha = deductive (logical certainty)
+    beta  = inductive (frequency in event store)
+    gamma = abductive (simplest explanation)
+    delta = simulative (predicted by strategy engine)
+  Confidence = (alpha * beta * gamma * delta)^(1/4)
+  A claim with high logic but low stability is a "Hypothesis."
+  A claim with high stability but low logic is "Folklore."
+  Both are stored, labeled correctly.
+
+STRATEGY ENGINE:
+  10 generals apply torque, not position votes.
+  SLERP interpolation on a quaternion sphere produces spirals,
+  flanks, and pivots -- not paralyzed zero vectors.
+  Temperature parameter allows simulated annealing: accepting
+  temporary loss to escape local maxima.
+
+WHAT'S BEEN TESTED (Instance 18):
+  17 hypotheses tested via scipy.stats. Results:
+  - 8 SUPPORTED (convergence, PID correlation, PCA
+    dimensionality, geometric mean veto, TF-IDF retrieval,
+    UCB1 learning, friction proxy)
+  - 8 REFUTED (dimension independence, goal distribution,
+    event distribution, entropy by status, reward trend,
+    optimizer convergence, Clausewitz coverage, state
+    predictability)
+  - 1 INCONCLUSIVE (reward schedule)
+  - 750 tests passing, 7288 tracked outcomes
+
+WHAT'S NOT PROVEN YET:
+  - Quaternion strategy outputs validated against feasibility
+  - Cold start convergence speed
+  - Exogenous shock resilience
+  - Whether any of this changes actual behavior
+
+DATA OBSERVATORY (v4.0):
+  The system indexes its own measurement surface.
+  - 2,401 data streams catalogued across 73 engines
+  - 42 falsifiable gaps registered (20 advanced past untested)
+  - 21 formal experiments designed with H0/H1 hypotheses
+  - Constraint wall: 7 blocker categories tracked
+  - Evidence types: formal | empirical | narrative | metaphorical
+  - Gap state machine: untested > demystified > designed >
+    collecting > ready > verdict
+  - 38 CLI commands under `plato proof`
+  - The system can prove or refute its own claims.
+    It has done both.
+            </div>
+
+            <div class="link-list">
+                <a href="https://github.com/ascendanti/PLATO" target="_blank">-> GitHub Repository</a>
+                <a href="https://github.com/ascendanti/PLATO/blob/main/README.md" target="_blank">-> README: For Engineers</a>
+                <a href="https://github.com/ascendanti/PLATO/blob/main/docs/foundational-dialogues/ARCHITECT-DIALOGUE-2026-02-10.md" target="_blank">-> Architect's Blueprint</a>
+            </div>
+        </details>
+
+        <div class="divider"></div>
+
+        <details>
+            <summary><h2>ARCHITECTURE</h2><span class="one-liner">5-tier elastic stack -- flight recorder spine, dumb orchestrator, circuit breaker</span></summary>
+            <div class="code-block">
+TIER V:   Execution Surface
+            Gateway (deterministic intent dispatch)
+            CLI (671 commands, 80 groups)
+            Plugin (Claude Code integration)
+
+TIER IV:  Capability Engines (87 total)
+            Elastic: all active at high energy,
+            collapse to [SURVIVAL][REST][LOG] at low energy
+
+TIER III: Knowledge Fabric
+            Graph, Retrieval, Bayesian Learning
+            Quarantine Buffer (unverified -> verified pipeline)
+
+TIER II:  Control Plane
+            Dumb Orchestrator (reads, dispatches, logs, does not think)
+            Circuit Breaker (3 consecutive failures -> degrade goal)
+            Fast Path (Tier 1: full analysis | Tier 2: bypass)
+
+TIER I:   Invariants
+            Event-Sourced Spine (Flight Recorder)
+            COMMAND -> EVENT -> PROJECTION
+            Traceability, not determinism.
+            </div>
+
+            <p style="margin-top: 20px; margin-bottom: 15px;">
+                Everything is SQLite. No cloud. Fully observable. Deterministic routing via regex. The orchestrator is deliberately stupid -- it does not think. Intelligence is distributed across bounded offices that read only what they need and write only what they own.
+            </p>
+        </details>
+
+        <div class="divider"></div>
+
+        <details>
+            <summary><h2>THE ARCHITECT</h2><span class="one-liner">Policy research, intergovernmental strategy, media, cybernetics</span></summary>
+            <p style="margin-bottom: 15px; line-height: 1.7;">
+                Started in policy research and international relations -- how do actors with competing interests, no shared information, and no central authority produce anything resembling order? Then intergovernmental strategy. Media production and digital innovation, eventually chief editor. A stint directing at an energy company. Then GM of a media corporation -- aligning 80+ people toward coherent output. Three languages, 35+ relocations, every domain insisting it's unique. None of them are. The binding constraint is always the same: <em>navigate feasible space with incomplete information toward a goal</em>.
+            </p>
+            <p style="margin-bottom: 15px; line-height: 1.7;">
+                No CS background. The shape of the problem crystallized somewhere between policy work and pattern matching: a bounded memory kernel that tracks coherence relative to a goal, forgets what costs more to maintain than to discard, and hardens what survives. I'd been doing control theory by hand for years before I had the vocabulary. PLATO is what happens when you stop describing the algorithm and start running it.
+            </p>
+            <p style="margin-bottom: 15px; line-height: 1.7;">
+                For the full story, see the <a href="architect.html">architect page</a>.
+            </p>
+        </details>
+
+        <div class="divider"></div>
+
+        <details open>
+            <summary><h2>CONTACT</h2><span class="one-liner">GitHub, repository, essays</span></summary>
+            <div class="link-list">
+                <a href="https://github.com/ascendanti" target="_blank">-> GitHub Profile</a>
+                <a href="https://github.com/ascendanti/PLATO" target="_blank">-> PLATO Repository</a>
+                <a href="blog.html">-> Essays</a>
+            </div>
+        </details>
+
+        <footer>
+[END_TRANSMISSION] | 87 engines | 20 instances | Status: OPERATIONAL | Gaps: open
+        </footer>
+    </div>
+</body>
+</html>

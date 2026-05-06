@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sovereign — Ascendanti</title>
+<meta name="description" content="Sovereign — multi-agent research-paper authoring. Eight agents, span-traced orchestrator, calibrator on 2,401 papers, audit office.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="frame wide">
+
+  <div class="parent">
+    <span><a href="https://atlasfirm.ca">Atlas Firm</a> · <a href="index.html">Ascendanti</a></span>
+    <span>Brief · 2026</span>
+  </div>
+
+  <nav class="primary">
+    <a href="index.html">Index</a>
+    <a href="sovereign.html" class="current">Sovereign</a>
+    <a href="ethos.html">Ethos</a>
+    <a href="reflections.html">Reflections</a>
+    <a href="address.html">Address</a>
+    <a href="archive/plato/">Archive</a>
+  </nav>
+
+  <div class="page-head">
+    <div class="kicker">Project Brief — Active 2026</div>
+    <h1>Sovereign</h1>
+    <p class="standfirst">A multi-agent autonomous research-paper authoring system for political science. Local-first. Span-traced. Self-auditing. Built around the principle that a single model cannot do eight people's jobs in one shot.</p>
+  </div>
+
+  <section>
+    <div class="section-head">
+      <span class="section-num">§ I</span>
+      <h2>The premise</h2>
+    </div>
+    <p class="lede">Sovereign began as the answer to a falsified hypothesis. Its predecessor — a single-call pipeline that asked one large model to draft a research paper end-to-end — failed with a perfect record: every output rejected, every run, every paper. The model was not the problem. The architecture was. A genius asked to be a committee, in one shot, with no memory of having tried before, will refuse the role by producing slop.</p>
+    <p>So we decomposed. Eight competences were named. Each was given a card to read, a card to write, and a contract that defines what it must not touch. Each emits a span event the moment it completes, so when the pipeline drifts we know which stage drifted, by how much, and why. The orchestrator does not think; it reads the plan, dispatches the next stage, and logs.</p>
+
+    <blockquote class="pull">
+      A genius asked to be a committee, in one shot, refuses the role by producing slop.
+      <cite>— On the predecessor</cite>
+    </blockquote>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-num">§ II</span>
+      <h2>The eight</h2>
+    </div>
+    <p>Each agent is a bounded function. It reads a defined input, performs one act of reasoning, writes a typed output, and emits a span. Nothing more.</p>
+
+    <ul class="tenets">
+      <li>
+        <h3>Spec-Author &amp; Spec-Adversary</h3>
+        <p>The drafter writes the paper specification: thesis, opponents, scope conditions, falsifier, target cases. The critic reads the draft and tries to break it — fatal findings block downstream stages until reconciled. Every paper begins with an argument that has already survived its first opponent.</p>
+      </li>
+      <li>
+        <h3>Source-Curator</h3>
+        <p>Annotates a retrieval cache with role, relevance, and rationale per source. Decides which forty-six abstracts matter, which six to mine deeply, and which to drop. The curator's job is to refuse most of what is offered.</p>
+      </li>
+      <li>
+        <h3>Note-Taker</h3>
+        <p>Mints cards. Each card carries an exact quote, a paraphrase, the source's author-year, a relation to the paper, and a section hint. A card is the atomic unit of citable claim. Cards that cannot be verified against a source are marked <code>UNVERIFIED</code> and excluded from the citation pool.</p>
+      </li>
+      <li>
+        <h3>Lit-Reviewer</h3>
+        <p>Names the schools engaged, the agreement edges between them, and where the paper lands in the conversation. Output is both structured (graph of positions) and prose (the literature-review section, draft one).</p>
+      </li>
+      <li>
+        <h3>Debate-Mapper</h3>
+        <p>Identifies live debates, underexplored intersections, contested concepts. The map of disagreement that the paper either intervenes in or routes around.</p>
+      </li>
+      <li>
+        <h3>Prose-Author &amp; Patch-Assembler</h3>
+        <p>The author writes one section at a time, grounded in the relevant cards, citing only authors that resolve to a card. Untraced citations trigger a bounded retry with the offenders forbidden by name. The assembler merges drafts into the manuscript at the section heading, anchored at column zero.</p>
+      </li>
+      <li>
+        <h3>Methodologist</h3>
+        <p>Runs seventy Shively rules over the manuscript. Each finding has a rule id, a severity, a locus, and a remediation. Findings flow back into a bounded audit-to-author revision loop.</p>
+      </li>
+      <li>
+        <h3>Adversary</h3>
+        <p>Runs eighty SAGE attacks against the manuscript. The paper is not judged near-final until the adversary's findings are absent or preempted.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-num">§ III</span>
+      <h2>The loop</h2>
+    </div>
+    <p>The orchestrator runs each paper through eight stages. Every stage emits a span. The trace is the paper's birth certificate.</p>
+
+    <pre class="diagram">  <span class="mute">·</span>
+  <span class="accent">①</span> Spec-Author + Spec-Adversary  <span class="mute">→</span>  paper_specs/<span class="accent">{paper}</span>.json
+  <span class="accent">②</span> Source-Curator                <span class="mute">→</span>  test_retrieval/<span class="accent">{paper}</span>.json
+  <span class="accent">③</span> Note-Taker                    <span class="mute">→</span>  cards/<span class="accent">{paper}</span>/card_*.json
+  <span class="accent">④</span> Lit-Reviewer                  <span class="mute">→</span>  schools, edges, where-paper-lands
+  <span class="accent">⑤</span> Debate-Mapper                 <span class="mute">→</span>  live debates, intersections
+  <span class="accent">⑥</span> Prose-Author (per section)    <span class="mute">→</span>  ProseDraft + cards-cited
+  <span class="accent">⑦</span> Patch-Assembler               <span class="mute">→</span>  runs/<span class="accent">{paper}</span>/manuscript.md
+  <span class="accent">⑧</span> Methodologist + Adversary     <span class="mute">→</span>  audit_<span class="accent">{paper}</span>.jsonl
+                                  <span class="mute">→</span>  calibration_<span class="accent">{paper}</span>.jsonl
+                                  <span class="mute">→</span>  ⚑ operator ping if near-final
+  <span class="mute">·</span>
+  <span class="mute">trace:</span> task_traces/pipeline_v2_<span class="accent">{paper}</span>_<span class="accent">{ts}</span>.jsonl
+  <span class="mute">portfolio:</span> state/pipeline_v2_portfolio.json (atomic)</pre>
+
+    <p>Eight stages produce one trace and ten artefacts. The trace is the per-stage span ledger — millisecond timing, contract status, decisions, signals. The artefacts are paper-level: the spec, the cards, the manuscript, the calibration, the audit. Together they form a complete, reproducible record of how this paper came to be the way it is.</p>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-num">§ IV</span>
+      <h2>The calibrator</h2>
+    </div>
+    <p>"Is this paper any good" is not a question you answer by vibes. It is a question you answer by distribution. The calibrator scores each manuscript on ten axes against a reference set of twenty-four hundred and one published papers from <em>International Studies Quarterly</em> and the <em>American Political Science Review</em>. A composite is reported alongside the per-axis scores; an axis is flagged if it falls below a threshold derived from the reference distribution.</p>
+
+    <div class="stat-strip">
+      <div class="stat"><div class="num">10</div><div class="label">axes scored</div></div>
+      <div class="stat"><div class="num">2,401</div><div class="label">golden-set papers</div></div>
+      <div class="stat"><div class="num">70</div><div class="label">methodology rules</div></div>
+      <div class="stat"><div class="num">80</div><div class="label">adversarial attacks</div></div>
+    </div>
+
+    <p>If a run does not improve on the previous run on axes we can name, the run did not improve. The calibrator's purpose is to make that judgment formal. A baseline snapshot is taken on first run; every subsequent run reports its delta. The operator does not have to read the manuscript to know whether the loop is learning.</p>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-num">§ V</span>
+      <h2>The stack</h2>
+    </div>
+    <p>Sovereign runs entirely on the operator's hardware — an Apple Silicon workstation with sixty-four gigabytes of unified memory. The model rotation is served by <code>llama-swap</code>, mixing MLX-backed servers for the larger reasoners and llama.cpp for selected GGUF quants.</p>
+
+    <ul class="idx">
+      <li><span class="name">Qwen3-Next-80B-Thinking</span><span class="desc">primary reasoner — 5-bit MLX</span></li>
+      <li><span class="name">Phi-4-Reasoning-Plus</span><span class="desc">secondary reasoner — 8-bit MLX</span></li>
+      <li><span class="name">Qwen3-30B-A3B-Instruct</span><span class="desc">workhorse — 6-bit MLX</span></li>
+      <li><span class="name">Qwen3-Coder-30B-A3B</span><span class="desc">structured output — 8-bit MLX</span></li>
+      <li><span class="name">Command-R-08-2024</span><span class="desc">prose author — 8-bit MLX, RAG-tuned</span></li>
+      <li><span class="name">Qwen2.5-VL-7B</span><span class="desc">vision — 8-bit MLX</span></li>
+      <li><span class="name">Qwen3-4B</span><span class="desc">speculative draft — 8-bit MLX</span></li>
+      <li><span class="name">Qwen3-Embedding-8B</span><span class="desc">embeddings — persistent</span></li>
+      <li><span class="name">Qwen3-Reranker-8B</span><span class="desc">reranker — persistent</span></li>
+    </ul>
+
+    <p>No cloud. No telemetry. The whole stack — about two hundred and forty gigabytes on disk — sits behind a single local router. When the operator closes the laptop, the system is gone. When it opens, it returns exactly as it was.</p>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-num">§ VI</span>
+      <h2>What it isn't</h2>
+    </div>
+    <p>Sovereign is not a chatbot. There is no persona, no helpful assistant, no conversational front. It is not a research <em>copilot</em>; it does not sit beside the operator suggesting edits. It runs as a batch over a paper specification and produces, on the other side, a manuscript that has survived eight rounds of independent review.</p>
+    <p>It is not a frontier model. It uses small, open, locally-runnable models — none above one hundred billion parameters — and gets where it gets through architecture rather than scale. The thesis is that the next decade of useful AI will be won by tighter loops, not larger weights.</p>
+    <p>It is not finished. The first integration run is paper-frontier-007. Whatever happens, the trace is the data. The loop will not be near-final on its first attempt; near-final on its first attempt was never the goal. The goal is a loop where the next run is traceably better than the last on axes we can name.</p>
+
+    <blockquote class="pull">
+      We did not ship a feature. We shipped a loop.
+      <cite>— Address at the cutover</cite>
+    </blockquote>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-num">§ VII</span>
+      <h2>Status</h2>
+    </div>
+    <p>The system is in <strong>plug-and-run</strong> readiness as of May 2026. Eight paper specifications have been pre-drafted (<code>frontier-007</code> through <code>frontier-014</code>), each surviving spec-adversary review with zero fatal findings. Three retrieval caches are warmed. The cutover script — preflight, model launch, smoke-test, dry-run, first live run — is one command.</p>
+    <p>One hundred and twenty-five tests pass. The gap-audit reports zero actionable findings across twenty-two checks. Six recurring bug patterns were caught and killed during build. The legacy single-call pipeline is queued for retirement on the third successful end-to-end run.</p>
+    <p>For the engineering log and the address given at the cutover, see <a href="address.html">the address</a> and <a href="reflections.html">reflections</a>.</p>
+  </section>
+
+  <footer class="colophon">
+    <span>Sovereign · Ascendanti · Atlas Firm Research</span>
+    <span><a href="index.html">↩ index</a></span>
+  </footer>
+
+</div>
+</body>
+</html>
